@@ -4,21 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { UsersComponent } from './users/users.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RequestsComponent } from './requests/requests.component';
-import { ReimbursementsComponent } from './reimbursements/reimbursements.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { ViewEmployeesComponent } from './employees/view-employees/view-employees.component';
+import { ViewRequestsComponent } from './requests/view-requests/view-requests.component';
+import { ViewProfileComponent } from './profile/view-profile/view-profile.component';
+import { LoginComponent } from './users/login/login.component';
+import { ViewReimbursementsComponent } from './reimbursements/view-reimbursements/view-reimbursements.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    UsersComponent,
-    ProfileComponent,
-    RequestsComponent,
-    ReimbursementsComponent,
-    EmployeesComponent
+    ViewEmployeesComponent,
+    ViewRequestsComponent,
+    ViewProfileComponent,
+    LoginComponent,
+    ViewReimbursementsComponent
   ],
   imports: [
     BrowserModule,
