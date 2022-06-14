@@ -14,7 +14,7 @@ export class ViewEmployeesComponent implements OnInit {
 
   constructor(private employeeService: EmployeesService) { 
     this.currentAllEmployees = [];
-  this.employeeService = new EmployeesService();
+  //this.employeeService = new EmployeesService();
   }
 
   ngOnInit(): void {
