@@ -26,7 +26,7 @@ public class DBUtil {
 		public static Connection makeConnection()throws SQLException {
 			// implemented singleton pattern here
 			if (conn == null) {
-					conn = DriverManager.getConnection("jdbc:postgresql://expenses.cysm9qyjnsmj.us-east-2.rds.amazonaws.com", "postgres", "project2");
+					conn = DriverManager.getConnection("jdbc:postgresql://expenses.cysm9qyjnsmj.us-east-2.rds.amazonaws.com/postgres", "postgres", "project2");
 			}
 			return conn;
 		}
