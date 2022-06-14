@@ -1,6 +1,8 @@
 package com.expense.expensereimbursement.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import com.expense.expensereimbursement.entity.RequestEntity;
 import com.expense.expensereimbursement.exception.ApplicationException;
 import com.expense.expensereimbursement.pojo.RequestPojo;
 
+
 public class RequestServiceImpl implements RequestService {
 	
 	@Autowired
@@ -17,10 +20,13 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public List<RequestPojo> getAllRequests() throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
+		List<RequestEntity> allRequestsEntity = requestDao.findAll();
+		List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
+		for(RequestEntity fetchedRequestEntity: allRequestsEntity) {
+		RequestPojo returnRequestPojo = new RequestPojo (fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+		  allRequestsPojo.add(returnRequestPojo);
+	}return allRequestsPojo;
 	}
-
 	@Override
 	public RequestPojo addRequest(RequestPojo requestPojo) throws ApplicationException {
 		RequestEntity requestEntity = new RequestEntity();
@@ -39,7 +45,7 @@ public class RequestServiceImpl implements RequestService {
 			requestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
 		}
 			
-		return (List<RequestPojo>) requestPojo;
+		return requestPojo;
 	}
 
 	@Override
