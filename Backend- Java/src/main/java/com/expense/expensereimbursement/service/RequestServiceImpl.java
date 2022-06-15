@@ -50,14 +50,29 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public boolean updateRequest(int requestId, String choice, String time) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return false;
+		// copy the pojo into an entity object
+		RequestEntity requestEntity = new RequestEntity();
+		BeanUtils.copyProperties(requestPojo, RequestPojo);
+		// now pass the requestEntity object to spring data jpa to be updated into the table
+		RequestEntity returnedRequestEntity = requestDao.save(requestEntity);
+		
+		return requestPojo;
+	}
 	}
 
 	@Override
 	public RequestPojo getARequest(int requestId) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<RequestEntity> requestEntityOpt = requestDao.findByEmployee(requestEmployee);
+		RequestPojo requestPojo = null;
+		if(requestEntityOpt.isPresent()) {
+			// take out the entity object which is wrapped into the optional object
+			RequestEntity fetchedRequestEntity = requestEntityOpt.get();
+			// copy the entity into the pojo
+			RequestPojo returnRequestPojo = new RequestPojo (fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+			requestPojo = new RequestPojo();
+			BeanUtils.copyProperties(fetchedRequestEntity, requestPojo); // nested copying will not take place here
+		}
+		return requestPojo;
 	}
 	
 

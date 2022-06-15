@@ -25,16 +25,17 @@ public class UserServiceImpl implements UserService {
 		return allUsersPojo;
 	}
 
-	@Override
-	public UserPojo getUser(String userEmail, String userPswd) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public UserPojo editUser(UserPojo userPojo, int userId) {
-		// TODO Auto-generated method stub
-		return null;
+				// copy the pojo into an entity object
+				UserEntity userEntity = new UserEntity();
+				BeanUtils.copyProperties(userPojo, userEntity);
+				
+				// now pass the bookEntity object to spring data jpa to be updated into the table
+				UserEntity returnedUserEntity = userDao.save(userEntity);
+				
+				return userPojo;
 	}
 
 }
