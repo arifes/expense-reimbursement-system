@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.expense.expensereimbursement.dao.UserDao;
 import com.expense.expensereimbursement.entity.UserEntity;
 import com.expense.expensereimbursement.pojo.UserPojo;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired

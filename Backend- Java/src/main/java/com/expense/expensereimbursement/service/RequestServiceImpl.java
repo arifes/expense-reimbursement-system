@@ -2,17 +2,16 @@ package com.expense.expensereimbursement.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.expense.expensereimbursement.dao.RequestDao;
 import com.expense.expensereimbursement.entity.RequestEntity;
 import com.expense.expensereimbursement.exception.ApplicationException;
 import com.expense.expensereimbursement.pojo.RequestPojo;
 
-
+@Service
 public class RequestServiceImpl implements RequestService {
 	
 	@Autowired
@@ -38,14 +37,13 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public List<RequestPojo> getRequestsByEmployee(int userId) throws ApplicationException {
-		Optional<RequestEntity> requestEntityOpt = requestDao.findById(userId);
-		RequestPojo requestPojo = null;
-		if(requestEntityOpt.isPresent()) {
-			RequestEntity fetchedRequestEntity = requestEntityOpt.get();
-			requestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
-		}
+		List<RequestEntity> allRequestsByEmpEntity = requestDao.findByUserId(userId);
+		List<RequestPojo> allRequestsByEmpPojo = new ArrayList<RequestPojo>();
+		for(RequestEntity fetchedRequestEntity : allRequestsByEmpEntity) {
+			RequestPojo returnrequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+		     allRequestsByEmpPojo.add(returnrequestPojo);
 			
-		return requestPojo;
+		}return allRequestsByEmpPojo;
 	}
 
 	@Override
