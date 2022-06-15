@@ -2,9 +2,12 @@ package com.expense.expensereimbursement.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,7 @@ public class RequestEntity {
 	@Column(name="request_id") // maps the property id to the column book_id of the DB
 	private int requestId;
 	
+	@JoinColumn 
 	@Column(name="request_userid")
 	private int userId;
 	
@@ -25,9 +29,9 @@ public class RequestEntity {
 	private String requestDescription;
 	
 	@Column(name="request_status")
-	private String RequestStatus;
+	private String requestStatus;
 	
-	@Column(name="request_imageURL")
+	@Column(name="request_imageurl")
 	private String requestImageURL;
 	
 	@Column(name="request_requesttime")
@@ -35,6 +39,10 @@ public class RequestEntity {
 	
 	@Column(name="request_resolvedtime")
 	private String resolvedTime;
+	
+//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+//	@JoinColumn(name ="user_id",nullable =false)
+//	private UserEntity userEntity;
 
 	// association mappings - for foreign key columns
 	
@@ -50,7 +58,7 @@ public class RequestEntity {
 		this.userId = userId;
 		this.requestAmount = requestAmount;
 		this.requestDescription = requestDescription;
-		RequestStatus = requestStatus;
+		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
 		this.requestTime = requestTime;
 		this.resolvedTime = resolvedTime;
@@ -66,7 +74,7 @@ public class RequestEntity {
 		this.userId = userId;
 		this.requestAmount = requestAmount;
 		this.requestDescription = requestDescription;
-		RequestStatus = requestStatus;
+		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
 		this.requestTime = requestTime;
 		this.resolvedTime = resolvedTime;
@@ -114,12 +122,12 @@ public class RequestEntity {
 
 
 	public String getRequestStatus() {
-		return RequestStatus;
+		return requestStatus;
 	}
 
 
 	public void setRequestStatus(String requestStatus) {
-		RequestStatus = requestStatus;
+		this.requestStatus = requestStatus;
 	}
 
 
@@ -156,7 +164,7 @@ public class RequestEntity {
 	@Override
 	public String toString() {
 		return "RequestEntity [requestId=" + requestId + ", userId=" + userId + ", requestAmount=" + requestAmount
-				+ ", requestDescription=" + requestDescription + ", RequestStatus=" + RequestStatus
+				+ ", requestDescription=" + requestDescription + ", requestStatus=" + requestStatus
 				+ ", requestImageURL=" + requestImageURL + ", requestTime=" + requestTime + ", resolvedTime="
 				+ resolvedTime + "]";
 	}
