@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Request } from 'src/app/request.model';
 import { RequestsHttpService } from 'src/app/requests-http.service';
 
@@ -12,10 +12,15 @@ import { RequestsHttpService } from 'src/app/requests-http.service';
 export class ViewReimbursementsComponent implements OnInit {
 
   currentAllRequests: Request[];
+  pendingRequests: Request[];
+  resolvedRequests: Request[];
 
-  constructor(private requestsHttpService: RequestsHttpService,
+  constructor(private activatedRoute: ActivatedRoute,
+    private requestsHttpService: RequestsHttpService,
               private router: Router ) {
   this.currentAllRequests = [];
+  this.pendingRequests = [];
+  this.resolvedRequests = [];
                }
 
   ngOnInit(): void {
@@ -28,4 +33,5 @@ export class ViewReimbursementsComponent implements OnInit {
       this.currentAllRequests = response;
     })
   }
+ // getRequestsByStatus()
 }

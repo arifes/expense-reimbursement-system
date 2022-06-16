@@ -11,5 +11,7 @@ import com.expense.expensereimbursement.entity.RequestEntity;
 public interface RequestDao extends JpaRepository <RequestEntity, Integer> {
 	
 	List<RequestEntity> findByUserId(int userId);
+	
+	List<RequestEntity> findByRequestStatus(String status);
 
 }

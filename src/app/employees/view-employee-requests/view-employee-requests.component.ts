@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Request } from 'src/app/request.model';
 import { RequestsHttpService } from 'src/app/requests-http.service';
 
@@ -13,26 +13,21 @@ export class ViewEmployeeRequestsComponent implements OnInit {
   allRequests: Request[];
   currentRequestsByEmployee: Request[];
 
-  constructor( private requestsHttpService: RequestsHttpService,
+  constructor( private activatedRoute: ActivatedRoute,
+    private requestsHttpService: RequestsHttpService,
                 private router: Router) { 
   this.allRequests = [];
   this.currentRequestsByEmployee = [];
    }
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData(){
-    this.requestsHttpService.getAllRequests().subscribe((response)=>{
+    let bidParam = this.activatedRoute.snapshot.paramMap.get('uid');
+    console.log(bidParam);
+    this.requestsHttpService.getAllRequestsByEmployee(bidParam).subscribe(response =>{
       console.log(response);
-      this.allRequests = response;
-    })
- };
-getAllRequestsByEmployee(userId: number){
- this.requestsHttpService.getAllRequestsByEmployee(userId).subscribe(response =>{
-  console.log(response);
-  this.currentRequestsByEmployee = response
- })
+      this.currentRequestsByEmployee = response
+  
+  })
+
 }
 }

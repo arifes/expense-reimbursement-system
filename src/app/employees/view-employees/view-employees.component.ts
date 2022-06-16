@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersHttpService } from 'src/app/users-http.service';
 import { Employee } from '../employee.model';
-import { EmployeesService } from '../employees.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,7 +30,7 @@ export class ViewEmployeesComponent implements OnInit {
     })
   }
 
-   viewEmployeeRequests(userId : number){
+   viewEmployeeRequests(userId : any){
      console.log(userId);
      this.router.navigate(['employeeRequests',userId]);
 
