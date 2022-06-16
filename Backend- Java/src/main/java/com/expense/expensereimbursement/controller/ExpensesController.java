@@ -40,6 +40,11 @@ public class ExpensesController {
 	public List<RequestPojo> getRequestsByEmployee(@PathVariable("userId")int userId) throws ApplicationException {
 		return requestService.getRequestsByEmployee(userId);
 	}
+	@GetMapping("requests/request_status/{status}")
+	public List<RequestPojo> getRequestsByStatus(@PathVariable("status")String status) throws ApplicationException{
+		return requestService.getRequestsByStatus(status);
+		
+	}
 /*	
 	@GetMapping("requests/{rid}")
 	public RequestPojo getARequest(@PathVariable ("rid") int requestId) throws ApplicationException {

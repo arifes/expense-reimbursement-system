@@ -78,6 +78,17 @@ public class RequestServiceImpl implements RequestService {
 	//	}
 		return ;
 	}
+
+	@Override
+	public List<RequestPojo> getRequestsByStatus(String status) throws ApplicationException {
+		List<RequestEntity> allRequestsEntity = requestDao.findByRequestStatus(status);
+		List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
+		for(RequestEntity fetchedRequestEntity : allRequestsEntity) {
+			RequestPojo returnRequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+		     allRequestsPojo.add(returnRequestPojo);
+			
+		}return allRequestsPojo;
+	}
 	
 
 }

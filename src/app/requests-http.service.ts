@@ -16,7 +16,7 @@ export class RequestsHttpService {
     return this.http.get<Request[]>(this.baseUrl);
   }
 
-  getAllRequestsByEmployee(userId: number): Observable<Request[]>{
+  getAllRequestsByEmployee(userId: any): Observable<Request[]>{
     return this.http.get<Request[]>(this.baseUrl+'/'+userId);
  }
 }
