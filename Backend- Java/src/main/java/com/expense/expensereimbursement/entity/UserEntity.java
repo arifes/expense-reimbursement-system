@@ -35,7 +35,7 @@ public class UserEntity {
 	private String userRole;
 	
 //	@OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY)
-//	private Set<RequestEntity> requests;
+//	private Set requests;
 
 	public UserEntity() {
 		

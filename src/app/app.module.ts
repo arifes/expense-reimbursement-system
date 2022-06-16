@@ -9,6 +9,9 @@ import { ViewRequestsComponent } from './requests/view-requests/view-requests.co
 import { ViewProfileComponent } from './profile/view-profile/view-profile.component';
 import { LoginComponent } from './users/login/login.component';
 import { ViewReimbursementsComponent } from './reimbursements/view-reimbursements/view-reimbursements.component';
+import { ViewEmployeeRequestsComponent } from './employees/view-employee-requests/view-employee-requests.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { ViewReimbursementsComponent } from './reimbursements/view-reimbursement
     ViewRequestsComponent,
     ViewProfileComponent,
     LoginComponent,
-    ViewReimbursementsComponent
+    ViewReimbursementsComponent,
+    ViewEmployeeRequestsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
