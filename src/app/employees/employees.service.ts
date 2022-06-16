@@ -7,10 +7,12 @@ import { Employee } from './employee.model';
 export class EmployeesService {
   allEmployees: Employee [] = [
     {
-    userId: 1,
-    userFirstName: 'John', 
-    userLastName: 'Smith' ,
-    userEmail:   'johnsmith@gmail.com',
+    userId: 0,
+    userFirstName: '', 
+    userLastName: '' ,
+    userEmail:   '',
+    userPassword: '',
+    userRole: '',
   }
   ];
 
@@ -20,5 +22,7 @@ export class EmployeesService {
     return this.allEmployees;
   }
 
-  
+ // getAllRequestsByEmployee(userId: number){
+ //     return this.allRequestsByEmployee;
+ // }
 }

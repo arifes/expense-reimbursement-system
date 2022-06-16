@@ -3,11 +3,13 @@ package com.expense.expensereimbursement.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.expense.expensereimbursement.dao.UserDao;
 import com.expense.expensereimbursement.entity.UserEntity;
+import com.expense.expensereimbursement.exception.ApplicationException;
 import com.expense.expensereimbursement.pojo.UserPojo;
 
 @Service
@@ -38,6 +40,13 @@ public class UserServiceImpl implements UserService {
 				UserEntity returnedUserEntity = userDao.save(userEntity);
 				
 				return userPojo;
+	}
+
+
+	@Override
+	public UserPojo getUser(String userEmail, String userPswd) throws ApplicationException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

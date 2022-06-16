@@ -36,9 +36,14 @@ public class ExpensesController {
 		return userService.getUsers();
 	}
 	
+	@GetMapping("requests/{userId}")
+	public List<RequestPojo> getRequestsByEmployee(@PathVariable("userId")int userId) throws ApplicationException {
+		return requestService.getRequestsByEmployee(userId);
+	}
+/*	
 	@GetMapping("requests/{rid}")
 	public RequestPojo getARequest(@PathVariable ("rid") int requestId) throws ApplicationException {
 		return requestService.getARequest(requestId);
 	}
-
+*/
 }
