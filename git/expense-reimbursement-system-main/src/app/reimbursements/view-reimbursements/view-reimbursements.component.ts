@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Request } from 'src/app/request.model';
+import { RequestsHttpService } from 'src/app/requests-http.service';
+
 
 @Component({
   selector: 'view-reimbursements',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewReimbursementsComponent implements OnInit {
 
-  constructor() { }
+  currentAllRequests: Request[];
+
+  constructor(private requestsHttpService: RequestsHttpService,
+              private router: Router ) {
+  this.currentAllRequests = [];
+               }
 
   ngOnInit(): void {
-  }
+    this.loadData();
+    }
 
+    loadData(){
+    this.requestsHttpService.getAllRequests().subscribe((response)=>{
+      console.log(response);
+      this.currentAllRequests = response;
+    })
+  }
 }

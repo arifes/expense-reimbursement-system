@@ -2,10 +2,14 @@ package com.expense.expensereimbursement.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.mapping.Set;
 
 @Entity
 @Table(name="users")
@@ -29,6 +33,9 @@ public class UserEntity {
 	
 	@Column(name="user_role")
 	private String userRole;
+	
+//	@OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY)
+//	private Set requests;
 
 	public UserEntity() {
 		
