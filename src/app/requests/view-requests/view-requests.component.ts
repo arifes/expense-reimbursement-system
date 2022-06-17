@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Request } from 'src/app/request.model';
+import { RequestsHttpService } from 'src/app/requests-http.service';
+
+
 
 @Component({
   selector: 'view-requests',
@@ -7,9 +12,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewRequestsComponent implements OnInit {
 
-  constructor() { }
+  employeeRequests: Request[];
+  currentRequestsByEmployee: Request[];
 
-  ngOnInit(): void {
-  }
+  constructor(private activatedRoute: ActivatedRoute,
+    private requestsHttpService: RequestsHttpService,
+    private router: Router) { 
 
+      this.employeeRequests = []
+      this.currentRequestsByEmployee = [];
+   }
+    
+
+   ngOnInit(): void {
+    let bidParam = this.activatedRoute.snapshot.paramMap.get('uid');
+    console.log(bidParam);
+    this.requestsHttpService.getAllRequestsByEmployee(bidParam).subscribe((response: Request[]) =>{
+      console.log(response);
+      this.currentRequestsByEmployee = response
+  
+  })
+
+}
 }
