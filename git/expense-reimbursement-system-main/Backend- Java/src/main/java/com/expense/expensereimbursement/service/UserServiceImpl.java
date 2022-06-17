@@ -48,5 +48,18 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Autowired
+	 UserDao newUser;
+	
+	public UserEntity saveUser (UserEntity userEntity) {
+		
+		return newUser.save(userEntity);
+		
+	}
+	public UserEntity fetchUserByEmailAndPassword(String userEmail, String userPassword) throws ApplicationException {
+		return newUser.findByUserEmailAndPasssword(userEmail,userPassword);
+		
+		
+	}
 
 }

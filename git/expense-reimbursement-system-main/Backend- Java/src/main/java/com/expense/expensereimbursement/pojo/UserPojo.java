@@ -23,50 +23,86 @@ public class UserPojo {
 			this.userPassword = userPassword;
 			this.userRole = userRole;
 		}
+		/**
+		 * @return the userId
+		 */
 
 		public int getUserId() {
 			return userId;
 		}
+		/**
+		 * @param requestId the userId to set
+		 */
 
 		public void setUserId(int userId) {
 			this.userId = userId;
 		}
+		/**
+		 * @return the userFirstName
+		 */
 
 		public String getUserFirstName() {
 			return userFirstName;
 		}
+		/**
+		 * @param userFirstName the userFirstName to set
+		 */
 
 		public void setUserFirstName(String userFirstName) {
 			this.userFirstName = userFirstName;
 		}
+		/**
+		 * @return the userLastName
+		 */
 
 		public String getUserLastName() {
 			return userLastName;
 		}
+		/**
+		 * @param userLastName the userLastName to set
+		 */
 
 		public void setUserLastName(String userLastName) {
 			this.userLastName = userLastName;
 		}
+		/**
+		 * @return the userEmail
+		 */
 
 		public String getUserEmail() {
 			return userEmail;
 		}
+		/**
+		 * @param userEmail the userEmail to set
+		 */
 
 		public void setUserEmail(String userEmail) {
 			this.userEmail = userEmail;
 		}
+		/**
+		 * @return the userPassword
+		 */
 
 		public String getUserPassword() {
 			return userPassword;
 		}
+		/**
+		 * @param userPassword the userPassword to set
+		 */
 
 		public void setUserPassword(String userPassword) {
 			this.userPassword = userPassword;
 		}
+		/**
+		 * @return the userRole
+		 */
 
 		public String getUserRole() {
 			return userRole;
 		}
+		/**
+		 * @param userRole the userRole to set
+		 */
 
 		public void setUserRole(String userRole) {
 			this.userRole = userRole;

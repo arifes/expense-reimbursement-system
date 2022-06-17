@@ -1,8 +1,9 @@
 package com.expense.expensereimbursement.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,17 @@ public class RequestServiceImpl implements RequestService {
 	//		BeanUtils.copyProperties(fetchedRequestEntity, requestPojo); // nested copying will not take place here
 	//	}
 		return ;
+	}
+
+	@Override
+	public List<RequestPojo> getRequestsByStatus(String status) throws ApplicationException {
+		List<RequestEntity> allRequestsEntity = requestDao.findByRequestStatus(status);
+		List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
+		for(RequestEntity fetchedRequestEntity : allRequestsEntity) {
+			RequestPojo returnRequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+		     allRequestsPojo.add(returnRequestPojo);
+			
+		}return allRequestsPojo;
 	}
 	
 

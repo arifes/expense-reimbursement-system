@@ -16,5 +16,7 @@ public interface RequestService {
 	void updateRequest(int requestId, String choice, String time) throws ApplicationException;
 	
 	void getARequest(int requestId) throws ApplicationException;
+	
+	List<RequestPojo> getRequestsByStatus (String status) throws ApplicationException;
 
 }

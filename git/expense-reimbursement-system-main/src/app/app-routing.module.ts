@@ -5,16 +5,18 @@ import { ViewEmployeesComponent } from './employees/view-employees/view-employee
 import { ViewProfileComponent } from './profile/view-profile/view-profile.component';
 import { ViewReimbursementsComponent } from './reimbursements/view-reimbursements/view-reimbursements.component';
 import { ViewRequestsComponent } from './requests/view-requests/view-requests.component';
+import { LoginComponent } from './users/login/login.component';
 
 
 const routes: Routes = [
   {path: "employees", component: ViewEmployeesComponent },
-  {path: "profile", component: ViewProfileComponent },
+  {path: "view-profile", component: ViewProfileComponent },
   {path: "reimbursements", component: ViewReimbursementsComponent},
   {path: "requests", component: ViewRequestsComponent},
   {path: "employeeRequests/:uid", component: ViewEmployeeRequestsComponent},
-  {path: "view-reimbursements", component: ViewReimbursementsComponent}
-  
+  //{path: "view-reimbursements", component: ViewReimbursementsComponent},
+  {path: "login", component: LoginComponent},
+
 
 ];
 
