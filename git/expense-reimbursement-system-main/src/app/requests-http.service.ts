@@ -28,4 +28,8 @@ export class RequestsHttpService {
  getARequest(requestId: any): Observable<Request>{
    return this.http.get<Request>(this.baseUrl+'/'+requestId);
  }
+ addRequest(sentRequest:Request):Observable<Request>{
+  return this.http.post<Request>(this.baseUrl,sentRequest);
+
+ }
 }

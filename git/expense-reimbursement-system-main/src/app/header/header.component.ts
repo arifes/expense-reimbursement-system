@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersHttpService } from '../users-http.service';
 
 @Component({
   selector: 'header',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loginService:UsersHttpService) { }
 
   ngOnInit(): void {
   }
