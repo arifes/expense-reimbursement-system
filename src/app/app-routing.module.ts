@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: "employees", component: ViewEmployeesComponent },
   {path: "profile", component: ViewProfileComponent },
   {path: "reimbursements", component: ViewReimbursementsComponent},
-  {path: "requests", component: ViewRequestsComponent},
+  {path: "view-requests", component: ViewRequestsComponent},
   {path: "employeeRequests/:uid", component: ViewEmployeeRequestsComponent},
   {path: "view-reimbursements", component: ViewReimbursementsComponent}
   
