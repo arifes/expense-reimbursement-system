@@ -13,5 +13,7 @@ public interface RequestDao extends JpaRepository <RequestEntity, Integer> {
 	List<RequestEntity> findByUserId(int userId);
 	
 	List<RequestEntity> findByRequestStatus(String status);
+	
+	RequestEntity findByRequestId(int requestId);
 
 }

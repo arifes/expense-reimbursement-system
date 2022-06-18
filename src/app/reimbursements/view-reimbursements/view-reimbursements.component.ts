@@ -25,6 +25,7 @@ export class ViewReimbursementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.getRequestsByStatus(status);
     }
 
     loadData(){
@@ -33,5 +34,23 @@ export class ViewReimbursementsComponent implements OnInit {
       this.currentAllRequests = response;
     })
   }
- // getRequestsByStatus()
+  getRequestsByStatus(status: string){
+    console.log(status);
+    this.requestsHttpService.getRequestsByStatus(status).subscribe((response)=>{ 
+      this.pendingRequests = response;
+    })
+
+  }
+
+getResolvedRequests(){
+  this.resolvedRequests = this.currentAllRequests.filter(request => request.requestStatus != "pending");
 }
+goToUpdateRequest(requestId: number){
+  this.router.navigate(['update-reimbursements', requestId])
+}
+
+
+    
+  
+}
+
