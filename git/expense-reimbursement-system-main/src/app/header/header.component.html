@@ -1,7 +1,7 @@
 <div>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" routerLink="login">Home</a>
+          <a class="navbar-brand" routerLink="#">Home</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -11,32 +11,32 @@
                     <a class="nav-link dropdown-toggle" routerLink="reimbursements" role="button" data-bs-toggle="dropdown">Reimbursements</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" routerLink="reimbursements">All Reimbursements</a></li>
-                      <li><a class="dropdown-item" routerLink="#">Pending Reimbursements</a></li>
+                      <li><a class="dropdown-item" routerLink="update-reimbursements">Pending Reimbursements</a></li>
                       <li><a class="dropdown-item" routerLink="#">Resolved Reimbursements</a></li>
                     </ul>
                   </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" routerLink="requests" role="button" data-bs-toggle="dropdown">Requests</a>
+                <a class="nav-link dropdown-toggle" routerLink="view-requests" role="button" data-bs-toggle="dropdown">Requests</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" routerLink="requests">My Requests</a></li>
+                  <li><a class="dropdown-item" routerLink="view-requests">My Requests</a></li>
                   <li><a class="dropdown-item" routerLink="#">Pending Requests</a></li>
                   <li><a class="dropdown-item" routerLink="#">Resolved Requests</a></li>
                 </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" routerLink="employees">Employees</a>
-              </li>
+              </li>  
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
+                <a class="nav-link dropdown-toggle" routerLink="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" routerLink="view-profile">My Profile</a></li>
-                  <li><a class="dropdown-item" routerLink="update-profile">Update Profile</a></li>
-
+                  <li><a class="dropdown-item" routerLink="profile">My Profile</a></li>
+                  <li><a class="dropdown-item" routerLink="#">Another link</a></li>
+                  <li><a class="dropdown-item" routerLink="#">A third link</a></li>
                 </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" routerLink="" style="float:right;">Logout</a>
-              </li>
+              </li>  
             </ul>
           </div>
         </div>

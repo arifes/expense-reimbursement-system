@@ -12,10 +12,10 @@ export class ViewEmployeesComponent implements OnInit {
 
  // employeeService: EmployeesService;
   currentAllEmployees: Employee[];
-
+  
 
   constructor(private usersHttpService: UsersHttpService,
-              private router: Router) {
+              private router: Router) { 
     this.currentAllEmployees = [];
   //this.employeeService = new EmployeesService();
   }

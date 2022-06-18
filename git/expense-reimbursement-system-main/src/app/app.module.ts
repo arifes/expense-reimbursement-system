@@ -12,6 +12,8 @@ import { ViewReimbursementsComponent } from './reimbursements/view-reimbursement
 import { ViewEmployeeRequestsComponent } from './employees/view-employee-requests/view-employee-requests.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { UpdateReimbursementsComponent } from './reimbursements/update-reimbursements/update-reimbursements.component';
+import { ResolvedReimbursementsComponent } from './reimbursements/resolved-reimbursements/resolved-reimbursements.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     ViewProfileComponent,
     LoginComponent,
     ViewReimbursementsComponent,
-    ViewEmployeeRequestsComponent
+    ViewEmployeeRequestsComponent,
+    UpdateReimbursementsComponent,
+    ResolvedReimbursementsComponent
   ],
   imports: [
     BrowserModule,
