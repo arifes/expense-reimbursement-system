@@ -53,30 +53,29 @@ public class RequestServiceImpl implements RequestService {
 	}
 
 	@Override
-	public void updateRequest(int requestId, String choice, String time) throws ApplicationException {
-		// copy the pojo into an entity object
-	//	RequestEntity requestEntity = new RequestEntity();
-	//	BeanUtils.copyProperties(requestPojo, requestEntity);
-		// now pass the requestEntity object to spring data jpa to be updated into the table
-	//	RequestEntity returnedRequestEntity = requestDao.save(requestEntity);
+	public RequestPojo updateRequest(int requestId, String status) throws ApplicationException {
+		RequestEntity requestEntity = requestDao.findByRequestId(requestId);
+		requestEntity.setRequestStatus(status);
+		 requestEntity = requestDao.save(requestEntity);
+		 RequestPojo requestPojo = null;
 		
-		return ;
+		return requestPojo;
 	}
 	
 
 	@Override
-	public void getARequest(int requestId) throws ApplicationException {
-	//	Optional<RequestEntity> requestEntityOpt = requestDao.findByEmployee();
-	//	RequestPojo requestPojo = null;
-	//	if(requestEntityOpt.isPresent()) {
+	public RequestPojo getARequest(int requestId) throws ApplicationException {
+		Optional<RequestEntity> requestEntityOpt = requestDao.findById(requestId);
+		RequestPojo requestPojo = null;
+		if(requestEntityOpt.isPresent()) {
 			// take out the entity object which is wrapped into the optional object
-	//		RequestEntity fetchedRequestEntity = requestEntityOpt.get();
+			RequestEntity fetchedRequestEntity = requestEntityOpt.get();
 			// copy the entity into the pojo
-	//		RequestPojo returnRequestPojo = new RequestPojo (fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
-	//		requestPojo = new RequestPojo();
-	//		BeanUtils.copyProperties(fetchedRequestEntity, requestPojo); // nested copying will not take place here
-	//	}
-		return ;
+			//RequestPojo returnRequestPojo = new RequestPojo (fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+			requestPojo = new RequestPojo();
+			BeanUtils.copyProperties(fetchedRequestEntity, requestPojo); // nested copying will not take place here
+		}
+		return requestPojo ;
 	}
 
 	@Override

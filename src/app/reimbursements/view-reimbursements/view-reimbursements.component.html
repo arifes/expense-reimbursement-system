@@ -6,78 +6,108 @@
       <a class="nav-link active" data-bs-toggle="tab" routerLink="view-reimbursements">All Reimbursements</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" routerLink="view-reimbursements">Pending Reimbursements</a>
+      <a class="nav-link" data-bs-toggle="tab" (click)="getRequestsByStatus('pending')" routerLink="update-reimbursements">Pending Reimbursements</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" routerLink="#menu2">Resolved Reimbursements</a>
+      <a class="nav-link" data-bs-toggle="tab" (click)="getResolvedRequests()" routerLink="view-reimbursements">Resolved Reimbursements</a>
     </li>
   </ul>
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
-      <div class="container mt-3">
-        <div class="row">
-            <div class="col-2">
+      <div class="row">
+        <div class="col-2">
         </div>
         <div class="col-8">
-    <table class="table table-hover">
-        <thead>
-            <tr>
+          <table class="table table-hover">
+            <thead>
+              <tr>
                 <th>Request ID</th>
-              <th>Employee ID</th>
-              <th>Amount</th>
-              <th>Description</th>
-              <th>imageURL</th>
-              <th>Request Time</th>
-              <th>Resolved Time</th>
-              <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let request of currentAllRequests">
-                    <td>{{request.requestId}}</td><td>{{request.userId}}</td>
-                    <td>{{request.requestAmount}}</td><td>{{request.requestDescription}}</td>
-                    <td>{{request.requestImageURL}}</td><td>{{request.requestTime}}</td>
-                    <td>{{request.resolvedTime}}</td><td>{{request.requestStatus}}</td>
-            </tr>
-        </tbody>
-    </table>
+                <th>Employee ID</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>imageURL</th>
+                <th>Request Time</th>
+                <th>Resolved Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of currentAllRequests">
+                <td>{{request.requestId}}</td>
+                <td>{{request.userId}}</td>
+                <td>{{request.requestAmount}}</td>
+                <td>{{request.requestDescription}}</td>
+                <td>{{request.requestImageURL}}</td>
+                <td>{{request.requestTime}}</td>
+                <td>{{request.resolvedTime}}</td>
+                <td>{{request.requestStatus}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="col-2">
         </div>
       </div>
     </div>
+  </div>
+  <div id="menu1" class="container tab-pane fade"><br>
+    <div class="col-8">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Request ID</th>
+            <th>Employee ID</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>imageURL</th>
+            <th>Request Time</th>
+            <th>Resolved Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of pendingRequests">
+            <td>{{request.requestId}}</td>
+            <td>{{request.userId}}</td>
+            <td>{{request.requestAmount}}</td>
+            <td>{{request.requestDescription}}</td>
+            <td>{{request.requestImageURL}}</td>
+            <td>{{request.requestTime}}</td>
+            <td>{{request.resolvedTime}}</td>
+            <td>{{request.requestStatus}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div id="menu1" class="container tab-pane fade"><br>
-      <div class="col-8">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Request ID</th>
-                  <th>Employee ID</th>
-                  <th>Amount</th>
-                  <th>Description</th>
-                  <th>imageURL</th>
-                  <th>Request Time</th>
-                  <th>Resolved Time</th>
-                  <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let request of currentAllRequests">
-                  <div *ngIf="request.requestStatus == 'pending'">
-                        <td>{{request.requestId}}</td><td>{{request.userId}}</td>
-                        <td>{{request.requestAmount}}</td><td>{{request.requestDescription}}</td>
-                        <td>{{request.requestImageURL}}</td><td>{{request.requestTime}}</td>
-                        <td>{{request.resolvedTime}}</td><td>{{request.requestStatus}}</td>
-                  </div>
-                </tr>
-            </tbody>
-        </table>
-            </div>
-    </div>
-    <div id="menu2" class="container tab-pane fade"><br>
-     
+  </div>
+  <div id="menu2" class="container tab-pane fade"><br>
+    <div class="col-8">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Request ID</th>
+            <th>Employee ID</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>imageURL</th>
+            <th>Request Time</th>
+            <th>Resolved Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of resolvedRequests">
+            <td>{{request.requestId}}</td>
+            <td>{{request.userId}}</td>
+            <td>{{request.requestAmount}}</td>
+            <td>{{request.requestDescription}}</td>
+            <td>{{request.requestImageURL}}</td>
+            <td>{{request.requestTime}}</td>
+            <td>{{request.resolvedTime}}</td>
+            <td>{{request.requestStatus}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-

@@ -19,4 +19,13 @@ export class RequestsHttpService {
   getAllRequestsByEmployee(userId: any): Observable<Request[]>{
     return this.http.get<Request[]>(this.baseUrl+'/'+userId);
  }
+ getRequestsByStatus(status: string):Observable<Request[]>{
+  return this.http.get<Request[]>(this.baseUrl+'/request_status/'+status);
+ }
+ updateRequest( sentRequest: Request): Observable<Request>{
+    return this.http.put<Request>(this.baseUrl, sentRequest);
+ }
+ getARequest(requestId: any): Observable<Request>{
+   return this.http.get<Request>(this.baseUrl+'/'+requestId);
+ }
 }
