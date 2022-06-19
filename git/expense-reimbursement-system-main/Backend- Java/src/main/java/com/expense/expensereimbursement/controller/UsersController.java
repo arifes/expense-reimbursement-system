@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.expense.expensereimbursement.exception.ApplicationException;
+import com.expense.expensereimbursement.pojo.RequestPojo;
 import com.expense.expensereimbursement.pojo.UserPojo;
 import com.expense.expensereimbursement.service.UserService;
 
@@ -19,14 +23,13 @@ public class UsersController {
 
 	@Autowired
 	UserService userService;
-	// commentsssssss
-//	public List<UserPojo> userPojo = createList();
+
 	
 	@GetMapping("users")
 	public List<UserPojo> getUsers() throws ApplicationException{
 		return userService.getUsers();
 	}
-	/*
+/*	
 	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = "expensereimbursement/json")
 	public List<UserPojo> firstPage() {
 		return userPojo;
@@ -44,17 +47,17 @@ public class UsersController {
 		return newUserPojo;
 
 	}
-
-	@GetMapping("users/{uid}")
-	public UserPojo getUser(@PathVariable("uid") int userId) throws ApplicationException {
-		return userService.getUser(userId);
+*/
+	@GetMapping("users/{userId}")
+	public UserPojo getUserById(@PathVariable("userId") int userId) throws ApplicationException {
+		return userService.getUserById(userId);
 
 	}
 
-	@PatchMapping("users/{userId}/{userpassword}")
-	public RequestPojo editUser(@PathVariable("userId") int userId, @PathVariable("userPassword") String userPassword)
+	@PatchMapping("users/{userId}")
+	public UserPojo updateUser(UserPojo userPojo,@PathVariable("userId") int userId)
 			throws ApplicationException {
-		return requestService.updateRequest(userId, userPassword);
+		return userService.UpdateUser(userPojo,userId);
 	}
-	*/
+	
 }

@@ -35,17 +35,37 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public UserPojo getUser(String userEmail, String userPswd) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
+	public UserPojo getUserById(int userId) throws ApplicationException {
+		Optional<UserEntity> userEntityOpt = Optional.of(userDao.findByUserId(userId));
+		UserPojo userPojo = null;
+		if (userEntityOpt.isPresent()) {
+			UserEntity fetchedUserEntity = userEntityOpt.get();
+			userPojo = new UserPojo();
+			BeanUtils.copyProperties(fetchedUserEntity, userPojo);
+		}
+		
+		return userPojo;
 	}
 
 
 
+
+
+
 	@Override
-	public UserPojo editUser(UserPojo userPojo, int userId) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
+	public UserPojo UpdateUser(UserPojo userPojo, int userId) throws ApplicationException {
+		UserEntity userEntity= new UserEntity();
+		userEntity=userDao.findByUserId(userId);
+		userEntity.setUserFirstName(null);
+		userEntity.setUserLastName(null);
+		userEntity.setUserEmail(null);
+		userEntity.setUserPassword(null);
+		userEntity.getUserRole();
+		userEntity= userDao.save(userEntity);
+		UserPojo userPojo1 =null;
+		
+		
+		return userPojo1;
 	}
 
 
