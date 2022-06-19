@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersHttpService } from '../users-http.service';
+import { AuthService } from '../users/auth.service';
 
 @Component({
   selector: 'header',
@@ -8,9 +8,15 @@ import { UsersHttpService } from '../users-http.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public loginService:UsersHttpService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
+  hasLoggedIn(){
+    return this.authService.isLoggedIn;
+  }
 
+  getRole(){
+    return this.authService.role;
+  }
 }

@@ -13,7 +13,7 @@ public interface RequestService {
 	
 	List<RequestPojo> getRequestsByEmployee(int userId) throws ApplicationException;
 	
-	RequestPojo updateRequest(int requestId, String RequestStatus) throws ApplicationException;
+	RequestPojo updateRequest(int requestId, String status) throws ApplicationException;
 	
 	RequestPojo getARequest(int requestId) throws ApplicationException;
 	

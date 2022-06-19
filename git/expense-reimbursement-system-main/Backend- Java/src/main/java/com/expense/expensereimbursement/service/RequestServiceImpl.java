@@ -53,9 +53,9 @@ public class RequestServiceImpl implements RequestService {
 	}
 
 	@Override
-	public RequestPojo updateRequest(int requestId, String requestStatus) throws ApplicationException {
+	public RequestPojo updateRequest(int requestId, String status) throws ApplicationException {
 		RequestEntity requestEntity = requestDao.findByRequestId(requestId);
-		requestEntity.setRequestStatus(requestStatus);
+		requestEntity.setRequestStatus(status);
 		 requestEntity = requestDao.save(requestEntity);
 		 RequestPojo requestPojo = null;
 		

@@ -1,21 +1,10 @@
-<section class="vh-100" style="background-color: #9A616D;">
-
-  <br>
-  <br>
-  <br>
-
-  <div class="centered">
-<br>
-<br>
-
-
-<div class="container">
+<div class="container mt-3">
+    <h2 style="text-align:center">Employees</h2>
     <div class="row">
         <div class="col-2">
-
     </div>
     <div class="col-8">
-<table class="table table-dark table-striped">
+<table class="table table-hover">
     <thead>
         <tr>
             <td>Employee Id</td>
@@ -31,7 +20,9 @@
             <td>{{employee.userFirstName}}</td>
             <td>{{employee.userLastName}}</td>
             <td>{{employee.userEmail}}</td>
-            <td> <button type="button" class="btn btn-light small">View Employee Requests</button></td>
+            <td> 
+                <button type="button" class="btn btn-light small" (click)="viewEmployeeRequests(employee.userId)">View Employee Requests</button>
+            </td>
 
         </tr>
     </tbody>
@@ -41,5 +32,3 @@
     </div>
   </div>
 </div>
-  </div>
-</section>
