@@ -23,22 +23,15 @@ import com.expense.expensereimbursement.service.UserService;
 @RestController
 @RequestMapping("api")
 @CrossOrigin(origins = "http://localhost:4200" )
-public class ExpensesController {
+public class RequestsController {
 	
 	@Autowired
 	RequestService requestService;
 	
-	@Autowired
-	UserService userService;
 	
 	@GetMapping("requests")
 	public List<RequestPojo> getAllRequests() throws ApplicationException {
 		return requestService.getAllRequests();
-	}
-	
-	@GetMapping("users")
-	public List<UserPojo> getUsers() throws ApplicationException{
-		return userService.getUsers();
 	}
 	
 	@GetMapping("requests/{userId}")

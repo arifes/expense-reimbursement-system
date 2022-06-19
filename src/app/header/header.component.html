@@ -5,9 +5,14 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <li class="nav-item">
+            <li class="nav-item" *ngIf="!hasLoggedIn()">
+            <a class="nav-link" routerLink="employees">Login</a>
+          </li>  
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
+                  <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='manager'">
                     <a class="nav-link dropdown-toggle" routerLink="reimbursements" role="button" data-bs-toggle="dropdown">Reimbursements</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" routerLink="reimbursements">All Reimbursements</a></li>
@@ -16,6 +21,7 @@
                     </ul>
                   </li>
               <li class="nav-item dropdown">
+                <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
                 <a class="nav-link dropdown-toggle" routerLink="view-requests" role="button" data-bs-toggle="dropdown">Requests</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" routerLink="view-requests">My Requests</a></li>
@@ -24,9 +30,11 @@
                 </ul>
               </li>
               <li class="nav-item">
+                <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='manager'">
                 <a class="nav-link" routerLink="employees">Employees</a>
               </li>  
               <li class="nav-item dropdown">
+                <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
                 <a class="nav-link dropdown-toggle" routerLink="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" routerLink="profile">My Profile</a></li>
@@ -35,6 +43,7 @@
                 </ul>
               </li>
               <li class="nav-item">
+                <li class="nav-item" *ngIf="hasLoggedIn()">
                 <a class="nav-link" routerLink="" style="float:right;">Logout</a>
               </li>  
             </ul>

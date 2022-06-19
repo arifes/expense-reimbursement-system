@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="container">
+    <form #myForm="ngForm">
+        <div class="text-danger">{{ invalidMessage }}</div>
+        <div class="card m-3">
+            <div class="card-header bg-primary">LOGIN FORM</div>
+            <div class="card-body">
+                <div class="mb-3 mt-3">
+                    <label for="uUserEmail" class="form-label">User Email:</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="uUserEmail" 
+                        placeholder="Enter user email" 
+                        name="uUserEmail"
+                        [(ngModel)]="user.userEmail" 
+                        required 
+                        #uUserEmail="ngModel">
+                    <div *ngIf="!uUserEmail.valid && uUserEmail.touched" class="text-danger small">
+                        User Email is required!
+                    </div>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="uPassword" class="form-label">Password:</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="uPassword" 
+                        placeholder="Enter password"
+                        name="password" 
+                        [(ngModel)]="user.userPassword" 
+                        required 
+                        #usPassword="ngModel">
+                    <div *ngIf="!usPassword.valid && usPassword.touched" class="text-danger small">
+                        Password is required!
+                    </div>
+                </div>
+                <div class="card-footer bg-primary">
+                    <button type="button" class="btn btn-warning" (click)="loginValidation()"
+                        [disabled]="!myForm.valid">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

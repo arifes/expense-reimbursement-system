@@ -2,6 +2,7 @@ package com.expense.expensereimbursement.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserDao userDao;
+	
+	
 
 	@Override
 	public List<UserPojo> getUsers() {
@@ -30,23 +33,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
-	public UserPojo editUser(UserPojo userPojo, int userId) {
-				// copy the pojo into an entity object
-				UserEntity userEntity = new UserEntity();
-				BeanUtils.copyProperties(userPojo, userEntity);
-				
-				// now pass the bookEntity object to spring data jpa to be updated into the table
-				UserEntity returnedUserEntity = userDao.save(userEntity);
-				
-				return userPojo;
-	}
-
 
 	@Override
 	public UserPojo getUser(String userEmail, String userPswd) throws ApplicationException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public UserPojo editUser(UserPojo userPojo, int userId) throws ApplicationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
 
 }
