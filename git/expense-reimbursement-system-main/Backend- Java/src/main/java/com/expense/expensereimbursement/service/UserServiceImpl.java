@@ -15,24 +15,22 @@ import com.expense.expensereimbursement.pojo.UserPojo;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	UserDao userDao;
-	
-	
 
 	@Override
 	public List<UserPojo> getUsers() {
 		List<UserEntity> allUsersEntity = userDao.findAll();
 		List<UserPojo> allUsersPojo = new ArrayList<UserPojo>();
-		for(UserEntity fetchedUserEntity: allUsersEntity) {
-		UserPojo returnUserPojo = new UserPojo(fetchedUserEntity.getUserId(), fetchedUserEntity.getUserFirstName(), fetchedUserEntity.getUserLastName(),fetchedUserEntity.getUserEmail(), fetchedUserEntity.getUserPassword(),fetchedUserEntity.getUserRole());
-								allUsersPojo.add(returnUserPojo);
+		for (UserEntity fetchedUserEntity : allUsersEntity) {
+			UserPojo returnUserPojo = new UserPojo(fetchedUserEntity.getUserId(), fetchedUserEntity.getUserFirstName(),
+					fetchedUserEntity.getUserLastName(), fetchedUserEntity.getUserEmail(),
+					fetchedUserEntity.getUserPassword(), fetchedUserEntity.getUserRole());
+			allUsersPojo.add(returnUserPojo);
 		}
 		return allUsersPojo;
 	}
-
-
 
 	@Override
 	public UserPojo getUserById(int userId) throws ApplicationException {
@@ -43,32 +41,17 @@ public class UserServiceImpl implements UserService {
 			userPojo = new UserPojo();
 			BeanUtils.copyProperties(fetchedUserEntity, userPojo);
 		}
-		
+
 		return userPojo;
 	}
 
-
-
-
-
-
 	@Override
-	public UserPojo UpdateUser(UserPojo userPojo, int userId) throws ApplicationException {
-		UserEntity userEntity= new UserEntity();
-		userEntity=userDao.findByUserId(userId);
-		userEntity.setUserFirstName(null);
-		userEntity.setUserLastName(null);
-		userEntity.setUserEmail(null);
-		userEntity.setUserPassword(null);
-		userEntity.getUserRole();
-		userEntity= userDao.save(userEntity);
-		UserPojo userPojo1 =null;
+	public UserPojo UpdateUser(UserPojo userPojo) throws ApplicationException {
+		UserEntity userEntity = new UserEntity();
+		BeanUtils.copyProperties(userPojo, userEntity);
+		UserEntity returnedUserEntity = userDao.save(userEntity);
 		
-		
-		return userPojo1;
+		return userPojo;
 	}
-
-
-	
 
 }
