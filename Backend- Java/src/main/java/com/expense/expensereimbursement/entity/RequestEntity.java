@@ -33,8 +33,7 @@ public class RequestEntity {
 	
 	@Column(name="request_imageurl")
 	private String requestImageURL;
-	
-	
+
 	public RequestEntity() {
 	
 	}
@@ -48,7 +47,7 @@ public class RequestEntity {
 		this.requestDescription = requestDescription;
 		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
-		
+
 	}
 
 
@@ -63,7 +62,7 @@ public class RequestEntity {
 		this.requestDescription = requestDescription;
 		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
-		
+
 	}
 
 
@@ -127,15 +126,12 @@ public class RequestEntity {
 	}
 
 
-	
 
 
 	@Override
 	public String toString() {
 		return "RequestEntity [requestId=" + requestId + ", userId=" + userId + ", requestAmount=" + requestAmount
 				+ ", requestDescription=" + requestDescription + ", requestStatus=" + requestStatus
-				+ ", requestImageURL=" + requestImageURL +  "]";
-	}
 
 
 	

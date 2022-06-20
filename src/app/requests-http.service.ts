@@ -29,5 +29,4 @@ export class RequestsHttpService {
    return this.http.get<Request>(this.baseUrl+'/request_id/'+requestId);
  }
 
- 
 }
