@@ -5,7 +5,6 @@ export interface Request{
 	requestDescription: string,
 	requestStatus: string,
 	requestImageURL: string,
-	requestTime: string,
-	resolvedTime: string,
+
     
 }

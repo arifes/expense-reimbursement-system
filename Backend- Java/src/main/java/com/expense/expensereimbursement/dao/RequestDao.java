@@ -1,6 +1,7 @@
 package com.expense.expensereimbursement.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,8 @@ public interface RequestDao extends JpaRepository <RequestEntity, Integer> {
 	
 	List<RequestEntity> findByRequestStatus(String status);
 	
-	RequestEntity findByRequestId(int requestId);
+//	RequestEntity findByRequestId(int requestId);
+	
+	Optional<RequestEntity> findByRequestId( int requestId);
 
 }

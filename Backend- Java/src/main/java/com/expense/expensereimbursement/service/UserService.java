@@ -15,7 +15,7 @@ public interface UserService {
 	
 	UserPojo getUserById(int userId) throws ApplicationException;
 	
-	public UserPojo UpdateUser(UserPojo userPojo, int userId) throws ApplicationException;
+	public UserPojo updateUser(UserPojo userPojo) throws ApplicationException;
 
 	}
 
