@@ -5,32 +5,50 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.expense.expensereimbursement.exception.ApplicationException;
 import com.expense.expensereimbursement.pojo.UserPojo;
+import com.expense.expensereimbursement.service.RequestService;
 import com.expense.expensereimbursement.service.UserService;
 
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
-@RequestMapping("api")
-@CrossOrigin(origins = "http://localhost:4200" )
+@RequestMapping("api/")
 public class UsersController {
 
 	@Autowired
 	UserService userService;
+	RequestService requestService;
 	
 //	public List<UserPojo> userPojo = createList();
-	
+
 	@GetMapping("users")
 	public List<UserPojo> getUsers() throws ApplicationException{
 		return userService.getUsers();
 	}
-	/*
-	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = "expensereimbursement/json")
-	public List<UserPojo> firstPage() {
-		return userPojo;
+	
+	@PostMapping("users")
+	public UserPojo getUserByUserEmailAndUserPassword(@RequestBody UserPojo userPojo ) throws ApplicationException {
+		return userService.getUserByUserEmailAndUserPassword(userPojo);
+		
 	}
+	@GetMapping("users/{userId}")
+	public UserPojo getUserById(@PathVariable("userId") int userId) throws ApplicationException {
+		return userService.getUserById(userId);
+
+	}
+	@PostMapping("users/{userId}")
+	public UserPojo updateUser(UserPojo userPojo,@PathVariable("userId") int userId) throws ApplicationException {
+		return userService.UpdateUser(userPojo,userId);
+	}
+	/*
+	
 
 	public List<UserPojo> createList() {
 		List<UserPojo> tempUserPojo = new ArrayList<>();
@@ -51,10 +69,5 @@ public class UsersController {
 
 	}
 
-	@PatchMapping("users/{userId}/{userpassword}")
-	public RequestPojo editUser(@PathVariable("userId") int userId, @PathVariable("userPassword") String userPassword)
-			throws ApplicationException {
-		return requestService.updateRequest(userId, userPassword);
-	}
 	*/
 }

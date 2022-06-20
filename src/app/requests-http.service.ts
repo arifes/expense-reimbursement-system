@@ -22,8 +22,8 @@ export class RequestsHttpService {
  getRequestsByStatus(status: string):Observable<Request[]>{
   return this.http.get<Request[]>(this.baseUrl+'/request_status/'+status);
  }
- updateRequest( sentRequest: Request): Observable<Request>{
-    return this.http.put<Request>(this.baseUrl, sentRequest);
+ updateRequest( request: Request): Observable<Request>{
+    return this.http.put<Request>(this.baseUrl, request);
  }
  getARequest(requestId: any): Observable<Request>{
    return this.http.get<Request>(this.baseUrl+'/'+requestId);
