@@ -7,17 +7,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.expense.expensereimbursement.entity.RequestEntity;
 import com.expense.expensereimbursement.exception.ApplicationException;
 import com.expense.expensereimbursement.pojo.RequestPojo;
-import com.expense.expensereimbursement.pojo.UserPojo;
 import com.expense.expensereimbursement.service.RequestService;
-import com.expense.expensereimbursement.service.UserService;
 
 
 @RestController
@@ -52,5 +49,8 @@ public class RequestsController {
 	public RequestPojo getARequest(@PathVariable ("rid") int requestId) throws ApplicationException {
 		return requestService.getARequest(requestId);
 	}
-
+	@PutMapping("requests")
+	public RequestPojo addRequest(@RequestBody RequestPojo requestPojo) throws ApplicationException {
+		return requestService.addRequest(requestPojo);
+	}
 }

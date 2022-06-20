@@ -16,6 +16,7 @@ import { UpdateReimbursementsComponent } from './reimbursements/update-reimburse
 import { ResolvedReimbursementsComponent } from './reimbursements/resolved-reimbursements/resolved-reimbursements.component';
 import { LogoutComponent } from './users/logout/logout.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
+import { AddRequestComponent } from './requests/add-request/add-request.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
     UpdateReimbursementsComponent,
     ResolvedReimbursementsComponent,
     LogoutComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    AddRequestComponent
   ],
   imports: [
     BrowserModule,

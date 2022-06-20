@@ -30,8 +30,10 @@ export class ViewRequestsComponent implements OnInit {
     this.requestsHttpService.getAllRequestsByEmployee(bidParam).subscribe((response: Request[]) =>{
       console.log(response);
       this.currentRequestsByEmployee = response
-  
-  })
 
+    })
+  }
 }
-}
+ 
+      
+  

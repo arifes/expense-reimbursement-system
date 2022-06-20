@@ -9,20 +9,15 @@ public class RequestPojo {
 		private String requestDescription;
 		private String requestStatus;
 		private String requestImageURL;
-		private String requestTime;
-		private String resolvedTime;
 		
 		public RequestPojo() {
 			super();
 	}
-		public RequestPojo(int requestId, int userId, double requestAmount, String requestDescription, String requestStatus, String requestImageURL, String requestTime, 
-				String resolvedTime) {
+		public RequestPojo(int requestId, int userId, double requestAmount, String requestDescription, String requestStatus, String requestImageURL) {
 			super();
 			this.requestId = requestId;
 			this.userId = userId;
 			this.requestStatus = requestStatus;
-			this.requestTime = requestTime;
-			this.resolvedTime = resolvedTime;
 			this.requestAmount = requestAmount;
 			this.requestDescription = requestDescription;
 			this.requestImageURL = requestImageURL;
@@ -62,30 +57,6 @@ public class RequestPojo {
 		 */
 		public void setRequestStatus(String requestStatus) {
 			this.requestStatus = requestStatus;
-		}
-		/**
-		 * @return the requestTime
-		 */
-		public String getRequestTime() {
-			return requestTime;
-		}
-		/**
-		 * @param requestTime the requestTime to set
-		 */
-		public void setRequestTime(String requestTime) {
-			this.requestTime = requestTime;
-		}
-		/**
-		 * @return the resolvedTime
-		 */
-		public String getResolvedTime() {
-			return resolvedTime;
-		}
-		/**
-		 * @param resolvedTime the resolvedTime to set
-		 */
-		public void setResolvedTime(String resolvedTime) {
-			this.resolvedTime = resolvedTime;
 		}
 		/**
 		 * @return the requestAmount
@@ -130,8 +101,6 @@ public class RequestPojo {
 			int result = 1;
 			result = prime * result + ((requestStatus == null) ? 0 : requestStatus.hashCode());
 			result = prime * result + requestId;
-			result = prime * result + ((requestTime == null) ? 0 : requestTime.hashCode());
-			result = prime * result + ((resolvedTime == null) ? 0 : resolvedTime.hashCode());
 			result = prime * result + ((requestDescription == null) ? 0 : requestDescription.hashCode());
 			result = prime * result + ((requestImageURL == null) ? 0 : requestImageURL.hashCode());
 			result = prime * result + userId;
@@ -155,16 +124,7 @@ public class RequestPojo {
 				return false;
 			if (requestAmount != other.requestAmount)
 				return false;
-			if (resolvedTime == null) {
-				if (other.resolvedTime != null)
-					return false;
-			} else if (!resolvedTime.equals(other.resolvedTime))
-				return false;
-			if (requestTime == null) {
-				if (other.requestTime != null)
-					return false;
-			} else if (!requestTime.equals(other.requestTime))
-				return false;
+		
 			if (requestDescription == null) {
 				if (other.requestDescription != null)
 					return false;
@@ -184,8 +144,7 @@ public class RequestPojo {
 
 		@Override
 		public String toString() {
-			return "RequestPojo [requestId=" + requestId + "userId=" + userId + ", requestDescription=" + requestDescription + ", requestImageURL=" + requestImageURL + ", requestTime="
-					+ requestTime + ", requestAmount=" + requestAmount + ", requestStatus=" + requestStatus + ", resolvedTime=" + resolvedTime + "]";
+			return "RequestPojo [requestId=" + requestId + "userId=" + userId + ", requestDescription=" + requestDescription + ", requestImageURL=" + requestImageURL + ", requestAmount=" + requestAmount + ", requestStatus=" + requestStatus + "]";
 		}
 		
 	}

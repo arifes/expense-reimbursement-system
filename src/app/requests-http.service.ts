@@ -28,4 +28,7 @@ export class RequestsHttpService {
  getARequest(requestId: any): Observable<Request>{
    return this.http.get<Request>(this.baseUrl+'/'+requestId);
  }
+ addARequest(newRequest: Request): Observable<Request>{
+    return this.http.put<Request>(this.baseUrl,newRequest);
+ }
 }

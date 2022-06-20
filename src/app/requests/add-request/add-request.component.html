@@ -1,0 +1,60 @@
+<p>add-request works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+                <div class="container">
+                 <form>
+                  <div class="card m-3">
+                    <div class="card-header bg-warning">REQUEST FORM</div>
+                    <div class="card-body">
+                        
+                        <div class="mb-3 mt-3">
+                            <label for="eRequestAmount" class="form-label">Request Amount:</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="eRequestAmount" 
+                                placeholder="Enter Request Amount" 
+                                name="requestAmount"
+                                [(ngModel)]="newRequest.requestAmount"
+                                #bkTitle="ngModel"
+                                required>
+
+                            <div *ngIf="!bkTitle.valid && bkTitle.touched" class="text-danger small">
+                                   Request Amount is required!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eRequestDescription" class="form-label">requestDescription:</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="eRequestDescription" 
+                                placeholder="Enter Request Description" 
+                                name="requestDescription"
+                                [(ngModel)]="newRequest.requestDescription">
+                        </div>
+                        <div class="mb-3">
+                            <label for="eRequestImageURLt" class="form-label">Enter receipt URL</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="eRequestImageURL" 
+                                placeholder="receiptURL" 
+                                name="employeeRequestAmount"
+                                [(ngModel)]="newRequest.requestImageURL">
+                        </div>
+                    </div>
+                    <div class="card-footer bg-warning">
+                        <button 
+                            type="button" 
+                            class="btn btn-success" 
+                            (click)="addANewRequest()">Add a New Request</button>
+                    </div>
+                  </div>
+                 </form>
+                </div>
+            </div>
+        </div>

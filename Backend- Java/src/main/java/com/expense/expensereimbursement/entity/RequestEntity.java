@@ -34,12 +34,6 @@ public class RequestEntity {
 	@Column(name="request_imageurl")
 	private String requestImageURL;
 	
-	@Column(name="request_requesttime")
-	private String requestTime;
-	
-	@Column(name="request_resolvedtime")
-	private String resolvedTime;
-	
 //	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 //	@JoinColumn(name ="user_id",nullable =false)
 //	private UserEntity userEntity;
@@ -53,22 +47,20 @@ public class RequestEntity {
 
 	
 	public RequestEntity(int userId, double requestAmount, String requestDescription, String requestStatus,
-			String requestImageURL, String requestTime, String resolvedTime) {
+			String requestImageURL) {
 		super();
 		this.userId = userId;
 		this.requestAmount = requestAmount;
 		this.requestDescription = requestDescription;
 		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
-		this.requestTime = requestTime;
-		this.resolvedTime = resolvedTime;
 	}
 
 
 	
 
 	public RequestEntity(int requestId, int userId, double requestAmount, String requestDescription,
-			String requestStatus, String requestImageURL, String requestTime, String resolvedTime) {
+			String requestStatus, String requestImageURL) {
 		super();
 		this.requestId = requestId;
 		this.userId = userId;
@@ -76,8 +68,6 @@ public class RequestEntity {
 		this.requestDescription = requestDescription;
 		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
-		this.requestTime = requestTime;
-		this.resolvedTime = resolvedTime;
 	}
 
 
@@ -141,32 +131,12 @@ public class RequestEntity {
 	}
 
 
-	public String getRequestTime() {
-		return requestTime;
-	}
-
-
-	public void setRequestTime(String requestTime) {
-		this.requestTime = requestTime;
-	}
-
-
-	public String getResolvedTime() {
-		return resolvedTime;
-	}
-
-
-	public void setResolvedTime(String resolvedTime) {
-		this.resolvedTime = resolvedTime;
-	}
-
 
 	@Override
 	public String toString() {
 		return "RequestEntity [requestId=" + requestId + ", userId=" + userId + ", requestAmount=" + requestAmount
 				+ ", requestDescription=" + requestDescription + ", requestStatus=" + requestStatus
-				+ ", requestImageURL=" + requestImageURL + ", requestTime=" + requestTime + ", resolvedTime="
-				+ resolvedTime + "]";
+				+ ", requestImageURL=" + requestImageURL + "]";
 	}
 
 

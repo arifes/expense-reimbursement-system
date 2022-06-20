@@ -28,7 +28,7 @@ public class RequestServiceImpl implements RequestService {
 		List<RequestEntity> allRequestsEntity = requestDao.findAll();
 		List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
 		for(RequestEntity fetchedRequestEntity: allRequestsEntity) {
-		RequestPojo returnRequestPojo = new RequestPojo (fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+		RequestPojo returnRequestPojo = new RequestPojo (fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL());
 		  allRequestsPojo.add(returnRequestPojo);
 	}return allRequestsPojo;
 	}
@@ -46,7 +46,7 @@ public class RequestServiceImpl implements RequestService {
 		List<RequestEntity> allRequestsByEmpEntity = requestDao.findByUserId(userId);
 		List<RequestPojo> allRequestsByEmpPojo = new ArrayList<RequestPojo>();
 		for(RequestEntity fetchedRequestEntity : allRequestsByEmpEntity) {
-			RequestPojo returnRequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+			RequestPojo returnRequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL());
 		     allRequestsByEmpPojo.add(returnRequestPojo);
 			
 		}return allRequestsByEmpPojo;
@@ -83,7 +83,7 @@ public class RequestServiceImpl implements RequestService {
 		List<RequestEntity> allRequestsEntity = requestDao.findByRequestStatus(status);
 		List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
 		for(RequestEntity fetchedRequestEntity : allRequestsEntity) {
-			RequestPojo returnRequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL(), fetchedRequestEntity.getRequestTime(), fetchedRequestEntity.getResolvedTime());
+			RequestPojo returnRequestPojo = new RequestPojo(fetchedRequestEntity.getRequestId(), fetchedRequestEntity.getUserId(), fetchedRequestEntity.getRequestAmount(),fetchedRequestEntity.getRequestDescription(),fetchedRequestEntity.getRequestStatus(),fetchedRequestEntity.getRequestImageURL());
 		     allRequestsPojo.add(returnRequestPojo);
 			
 		}return allRequestsPojo;
