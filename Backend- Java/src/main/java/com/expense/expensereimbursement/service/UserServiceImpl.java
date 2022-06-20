@@ -35,9 +35,34 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public UserPojo getUser(String userEmail, String userPswd) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
+	public UserPojo getUserByUserEmailAndUserPassword(UserPojo userPojo) throws ApplicationException {
+		UserEntity returnedUserEntity = new UserEntity();
+		BeanUtils.copyProperties(userPojo, returnedUserEntity);
+		String email = returnedUserEntity.getUserEmail();
+		String password = returnedUserEntity.getUserPassword();
+	
+		UserEntity fetchedUserEntity = userDao.findByUserEmailAndUserPassword(email, password);
+		UserPojo newUserPojo = null;		
+			// copy the entity into the pojo
+			//bookPojo = new BookPojo(fetchedBookEntity.getId(), fetchedBookEntity.getBookTitle(), fetchedBookEntity.getBookGenre(), fetchedBookEntity.getBookAuthor(),fetchedBookEntity.getBookCost(), fetchedBookEntity.getBookImage());
+			newUserPojo = new UserPojo();
+			BeanUtils.copyProperties(fetchedUserEntity, newUserPojo); // nested copying will not take place here
+		
+		//LOG.info("Exited getABook() in service...");
+		return newUserPojo;
+	}
+	
+	@Override
+	public UserPojo getUserById(int userId) throws ApplicationException {
+		Optional<UserEntity> userEntityOpt = Optional.of(userDao.findByUserId(userId));
+		UserPojo userPojo = null;
+		if (userEntityOpt.isPresent()) {
+			UserEntity fetchedUserEntity = userEntityOpt.get();
+			userPojo = new UserPojo();
+			BeanUtils.copyProperties(fetchedUserEntity, userPojo);
+		}
+
+		return userPojo;
 	}
 
 
@@ -46,6 +71,22 @@ public class UserServiceImpl implements UserService {
 	public UserPojo editUser(UserPojo userPojo, int userId) throws ApplicationException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public UserPojo updateUser(UserPojo userPojo) throws ApplicationException {
+		UserEntity userEntity= new UserEntity();
+//		userEntity=userDao.findByUserId(userId);
+		userEntity.setUserFirstName(null);
+		userEntity.setUserLastName(null);
+		userEntity.setUserEmail(null);
+		userEntity.setUserPassword(null);
+		userEntity.getUserRole();
+		userEntity= userDao.save(userEntity);
+		UserPojo userPojo1 =null;
+
+
+		return userPojo1;
 	}
 
 

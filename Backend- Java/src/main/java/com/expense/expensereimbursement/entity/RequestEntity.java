@@ -33,14 +33,7 @@ public class RequestEntity {
 	
 	@Column(name="request_imageurl")
 	private String requestImageURL;
-	
-//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-//	@JoinColumn(name ="user_id",nullable =false)
-//	private UserEntity userEntity;
 
-	// association mappings - for foreign key columns
-	
-	// framework expects you to provide a default constructor
 	public RequestEntity() {
 	
 	}
@@ -54,6 +47,7 @@ public class RequestEntity {
 		this.requestDescription = requestDescription;
 		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
+
 	}
 
 
@@ -68,6 +62,7 @@ public class RequestEntity {
 		this.requestDescription = requestDescription;
 		this.requestStatus = requestStatus;
 		this.requestImageURL = requestImageURL;
+
 	}
 
 
@@ -132,12 +127,11 @@ public class RequestEntity {
 
 
 
+
 	@Override
 	public String toString() {
 		return "RequestEntity [requestId=" + requestId + ", userId=" + userId + ", requestAmount=" + requestAmount
 				+ ", requestDescription=" + requestDescription + ", requestStatus=" + requestStatus
-				+ ", requestImageURL=" + requestImageURL + "]";
-	}
 
 
 	

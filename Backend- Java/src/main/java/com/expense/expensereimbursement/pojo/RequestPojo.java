@@ -9,6 +9,7 @@ public class RequestPojo {
 		private String requestDescription;
 		private String requestStatus;
 		private String requestImageURL;
+
 		
 		public RequestPojo() {
 			super();
@@ -17,9 +18,10 @@ public class RequestPojo {
 			super();
 			this.requestId = requestId;
 			this.userId = userId;
-			this.requestStatus = requestStatus;
+
 			this.requestAmount = requestAmount;
 			this.requestDescription = requestDescription;
+			this.requestStatus = requestStatus;
 			this.requestImageURL = requestImageURL;
 		}
 		/**
@@ -58,6 +60,7 @@ public class RequestPojo {
 		public void setRequestStatus(String requestStatus) {
 			this.requestStatus = requestStatus;
 		}
+
 		/**
 		 * @return the requestAmount
 		 */
@@ -124,7 +127,7 @@ public class RequestPojo {
 				return false;
 			if (requestAmount != other.requestAmount)
 				return false;
-		
+
 			if (requestDescription == null) {
 				if (other.requestDescription != null)
 					return false;
@@ -141,10 +144,13 @@ public class RequestPojo {
 				return false;
 			return true;
 		}
-
 		@Override
 		public String toString() {
-			return "RequestPojo [requestId=" + requestId + "userId=" + userId + ", requestDescription=" + requestDescription + ", requestImageURL=" + requestImageURL + ", requestAmount=" + requestAmount + ", requestStatus=" + requestStatus + "]";
+			return "RequestPojo [requestId=" + requestId + ", userId=" + userId + ", requestAmount=" + requestAmount
+					+ ", requestDescription=" + requestDescription + ", requestStatus=" + requestStatus
+					+ ", requestImageURL=" + requestImageURL + "]";
+
 		}
+
 		
 	}

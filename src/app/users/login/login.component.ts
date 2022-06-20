@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             //set the role to admin in auth service
             this.authService.role="manager";
             // route to view-http-book
-            this.router.navigate(['managerHome']);
+            this.router.navigate(['reimbursements']);
         }else if(response.userRole == "employee"){
             //set the role to employee in auth service
             this.authService.role="employee";
