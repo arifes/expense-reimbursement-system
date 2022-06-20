@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,8 +44,9 @@ public class UsersController {
 		return userService.getUserById(userId);
 
 	}
-	@PostMapping("users/{userId}")
-	public UserPojo updateUser(@RequestBody UserPojo userPojo) throws ApplicationException {
+	@PutMapping("users")
+	public UserPojo updateUser(@RequestBody UserPojo userPojo)
+			throws ApplicationException {
 		return userService.updateUser(userPojo);
 	}
 	/*

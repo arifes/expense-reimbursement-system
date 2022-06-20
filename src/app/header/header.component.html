@@ -7,7 +7,7 @@
           </button>
           <li class="nav-item">
             <li class="nav-item" *ngIf="!hasLoggedIn()">
-            <a class="nav-link" routerLink="employees">Login</a>
+            <a class="navbar-brand" routerLink="employees">Login</a>
           </li>  
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
@@ -22,7 +22,7 @@
                   </li>
               <li class="nav-item dropdown">
                 <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
-                <a class="nav-link dropdown-toggle" routerLink="view-requests" role="button" data-bs-toggle="dropdown">Requests</a>
+                <a class="nav-link dropdown-toggle" routerLink="" role="button" data-bs-toggle="dropdown">Requests</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" routerLink="view-requests">My Requests</a></li>
                   <li><a class="dropdown-item" routerLink="#">Pending Requests</a></li>
@@ -38,8 +38,7 @@
                 <a class="nav-link dropdown-toggle" routerLink="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" routerLink="profile">My Profile</a></li>
-                  <li><a class="dropdown-item" routerLink="#">Another link</a></li>
-                  <li><a class="dropdown-item" routerLink="#">A third link</a></li>
+                  <li><a class="dropdown-item" routerLink="update-profile">Update Profile</a></li>
                 </ul>
               </li>
               <li class="nav-item">

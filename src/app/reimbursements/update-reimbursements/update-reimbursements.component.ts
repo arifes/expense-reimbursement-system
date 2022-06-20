@@ -12,7 +12,6 @@ import { RequestsHttpService } from 'src/app/requests-http.service';
 export class UpdateReimbursementsComponent implements OnInit {
   currentAllRequests: Request[];
   pendingRequests: Request[];
-  resolvedRequests: Request[];
 
   updateRequest: Request = {
     requestId: 0,
@@ -35,8 +34,7 @@ export class UpdateReimbursementsComponent implements OnInit {
               private router: Router) { 
                 this.currentAllRequests = [];
                 this.pendingRequests = [];
-                this.resolvedRequests = [];
-                
+              
               
               }
                 
@@ -57,8 +55,9 @@ export class UpdateReimbursementsComponent implements OnInit {
   updateRequestInfo(updateRequest: Request){
     
     this.requestHttpService.updateRequest(this.updateRequest).subscribe((response)=>{
-      this.router.navigate(['view-Reimbursments'])
       console.log(this.updateRequest);
+      this.router.navigate(['view-Reimbursments'])
+      
     })
   }
   loadData(){
@@ -78,9 +77,7 @@ export class UpdateReimbursementsComponent implements OnInit {
     this.pendingRequests = this.currentAllRequests.filter(request => request.requestStatus == "pending");
   }
 
-getResolvedRequests(){
-  this.resolvedRequests = this.currentAllRequests.filter(request => request.requestStatus != "pending");
-}
+
 Update(requestId: any){
   this.requestHttpService.getARequest(requestId).subscribe((response)=>{
     this.updateRequest = response;

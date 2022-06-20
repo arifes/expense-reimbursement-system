@@ -75,18 +75,11 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserPojo updateUser(UserPojo userPojo) throws ApplicationException {
-		UserEntity userEntity= new UserEntity();
-//		userEntity=userDao.findByUserId(userId);
-		userEntity.setUserFirstName(null);
-		userEntity.setUserLastName(null);
-		userEntity.setUserEmail(null);
-		userEntity.setUserPassword(null);
-		userEntity.getUserRole();
-		userEntity= userDao.save(userEntity);
-		UserPojo userPojo1 =null;
+		UserEntity userEntity = new UserEntity();
+		BeanUtils.copyProperties(userPojo, userEntity);
+		UserEntity returnedUserEntity = userDao.save(userEntity);
 
-
-		return userPojo1;
+		return userPojo;
 	}
 
 
