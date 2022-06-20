@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Request } from 'src/app/request.model';
 import { RequestsHttpService } from 'src/app/requests-http.service';
 
@@ -20,39 +21,44 @@ export class UpdateReimbursementsComponent implements OnInit {
 	requestDescription: '',
 	requestStatus: '',
 	requestImageURL: '',
-	requestTime: '',
-	resolvedTime: '',
-  }
+	
+  
 
+  }
+ 
+   
+   
+    
 
   constructor(private activatedRoute: ActivatedRoute,
               private requestHttpService: RequestsHttpService,
               private router: Router) { 
                 this.currentAllRequests = [];
                 this.pendingRequests = [];
-                this.resolvedRequests = [];}
-
+                this.resolvedRequests = [];
+                
+              
+              }
+                
   ngOnInit(): void {
-    let bidParam = this.activatedRoute.snapshot.paramMap.get('rid');
-    console.log(bidParam);
-    this.requestHttpService.getARequest(bidParam).subscribe((response)=>{
-      this.updateRequest = response;
-    })
+   
     this.loadData();
-    this.getRequestsByStatus(status);
+    this.getPendingRequests();
   }
 
     changeStatus(status: any, request: Request){
       this.updateRequest.requestStatus = status
       console.log(status);
+      console.log(this.updateRequest);
     }
 
   
 
-  updateRequestInfo(request: Request){
-    console.log(this.updateRequest);
+  updateRequestInfo(updateRequest: Request){
+    
     this.requestHttpService.updateRequest(this.updateRequest).subscribe((response)=>{
       this.router.navigate(['view-Reimbursments'])
+      console.log(this.updateRequest);
     })
   }
   loadData(){
@@ -68,13 +74,19 @@ export class UpdateReimbursementsComponent implements OnInit {
     })
 
   }
-  
+  getPendingRequests(){
+    this.pendingRequests = this.currentAllRequests.filter(request => request.requestStatus == "pending");
+  }
 
 getResolvedRequests(){
   this.resolvedRequests = this.currentAllRequests.filter(request => request.requestStatus != "pending");
 }
-Update(requestId: number){
-  this.router.navigate(['update-reimbursements', requestId])
+Update(requestId: any){
+  this.requestHttpService.getARequest(requestId).subscribe((response)=>{
+    this.updateRequest = response;
+    console.log(this.updateRequest)
+  
+})
 }
 }
 

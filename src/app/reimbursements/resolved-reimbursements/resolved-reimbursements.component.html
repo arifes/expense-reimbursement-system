@@ -1,1 +1,32 @@
-<p>resolved-reimbursements works!</p>
+<h2 style="text-align:center">Resolved Reimbursements</h2>
+<span><button type="button" (click)="getResolvedRequests()" class="btn btn-link">View</button> </span> 
+<div class="row">
+    <div class="col-2">
+    </div>     
+      <div class="col-8">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Employee ID</th>
+              <th>Amount</th>
+              <th>Description</th>
+              <th>imageURL</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of resolvedRequests">
+              <td>{{request.requestId}}</td>
+              <td>{{request.userId}}</td>
+              <td>{{request.requestAmount}}</td>
+              <td>{{request.requestDescription}}</td>
+              <td><img [src]="request.requestImageURL" height="80px" width="100px"></td> 
+              <td>{{request.requestStatus}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+  
+

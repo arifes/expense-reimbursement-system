@@ -12,8 +12,6 @@
           <th>Amount</th>
           <th>Description</th>
           <th>imageURL</th>
-          <th>Request Time</th>
-          <th>Resolved Time</th>
           <th>Status</th>
         </tr>
     </thead>
@@ -21,8 +19,8 @@
         <tr *ngFor="let request of currentRequestsByEmployee">
                 <td>{{request.requestId}}</td><td>{{request.userId}}</td>
                 <td>{{request.requestAmount}}</td><td>{{request.requestDescription}}</td>
-                <td>{{request.requestImageURL}}</td><td>{{request.requestTime}}</td>
-                <td>{{request.resolvedTime}}</td><td>{{request.requestStatus}}</td>
+                <td><img [src]="request.requestImageURL" height="80px" width="100px"></td>
+                 <td>{{request.requestStatus}}</td>
         </tr>
     </tbody>
 </table>

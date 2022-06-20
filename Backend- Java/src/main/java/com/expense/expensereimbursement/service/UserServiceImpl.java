@@ -74,9 +74,9 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserPojo UpdateUser(UserPojo userPojo, int userId) throws ApplicationException {
+	public UserPojo updateUser(UserPojo userPojo) throws ApplicationException {
 		UserEntity userEntity= new UserEntity();
-		userEntity=userDao.findByUserId(userId);
+//		userEntity=userDao.findByUserId(userId);
 		userEntity.setUserFirstName(null);
 		userEntity.setUserLastName(null);
 		userEntity.setUserEmail(null);

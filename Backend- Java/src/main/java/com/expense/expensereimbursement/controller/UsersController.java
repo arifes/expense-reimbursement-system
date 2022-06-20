@@ -44,8 +44,8 @@ public class UsersController {
 
 	}
 	@PostMapping("users/{userId}")
-	public UserPojo updateUser(UserPojo userPojo,@PathVariable("userId") int userId) throws ApplicationException {
-		return userService.UpdateUser(userPojo,userId);
+	public UserPojo updateUser(@RequestBody UserPojo userPojo) throws ApplicationException {
+		return userService.updateUser(userPojo);
 	}
 	/*
 	

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { Request } from './request.model';
 
 @Injectable({
@@ -22,10 +22,12 @@ export class RequestsHttpService {
  getRequestsByStatus(status: string):Observable<Request[]>{
   return this.http.get<Request[]>(this.baseUrl+'/request_status/'+status);
  }
- updateRequest( request: Request): Observable<Request>{
-    return this.http.put<Request>(this.baseUrl, request);
+ updateRequest( updateRequest: Request): Observable<Request>{
+    return this.http.put<Request>(this.baseUrl, updateRequest);
  }
  getARequest(requestId: any): Observable<Request>{
-   return this.http.get<Request>(this.baseUrl+'/'+requestId);
+   return this.http.get<Request>(this.baseUrl+'/request_id/'+requestId);
  }
+
+ 
 }
