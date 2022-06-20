@@ -23,7 +23,7 @@ export class RequestsHttpService {
   return this.http.get<Request[]>(this.baseUrl+'/request_status/'+status);
  }
  updateRequest( updateRequest: Request): Observable<Request>{
-    return this.http.put<Request>(this.baseUrl, updateRequest);
+    return this.http.post<Request>(this.baseUrl, updateRequest);
  }
  getARequest(requestId: any): Observable<Request>{
    return this.http.get<Request>(this.baseUrl+'/request_id/'+requestId);

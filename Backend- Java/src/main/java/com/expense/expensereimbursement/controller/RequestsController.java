@@ -51,7 +51,7 @@ public class RequestsController {
 		
 	}
 
-	@PutMapping("requests")
+	@PostMapping("requests")
 	public RequestPojo updateRequest(@RequestBody RequestPojo requestPojo) throws ApplicationException{
 		return requestService.updateRequest(requestPojo);
 	}
