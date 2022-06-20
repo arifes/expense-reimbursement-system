@@ -84,19 +84,19 @@
                 
                       <!-- Modal Header -->
                       <div class="modal-header">
-                        <h4 class="modal-title">Modal Heading</h4>
+                        <h4 class="modal-title">Update Request</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                       </div>
                 
                       <!-- Modal body -->
                       <div class="modal-body">
-                          <button type="button" class="btn btn-light" >Approve</button>
-                          <button type="button" class="btn btn-light" >Deny</button>
+                          <button type="button" class="btn btn-light" (click)="changeStatus('approved', this.request)" >Approve</button>
+                          <button type="button" class="btn btn-light" (click)="changeStatus('denied', this.request)">Deny</button>
                       </div>
                 
                       <!-- Modal footer -->
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateRequestInfo(this.request)">Update</button>
                       </div>
                 
                     </div>

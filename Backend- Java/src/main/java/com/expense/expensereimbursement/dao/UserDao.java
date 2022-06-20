@@ -9,9 +9,10 @@ import com.expense.expensereimbursement.entity.UserEntity;
 
 @Repository
 public interface UserDao extends JpaRepository<UserEntity, Integer> {
-	List<UserEntity> findByUserEmail(String userEmail);
-	List<UserEntity> findByUserId(String userPassword);
-	//UserEntity findByRequestId(int requestId);
+
+	
 	UserEntity findByUserId(int userId);
+	
+	UserEntity findByUserEmailAndUserPassword(String email, String password);
 
 }

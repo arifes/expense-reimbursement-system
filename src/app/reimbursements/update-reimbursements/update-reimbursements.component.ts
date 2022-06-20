@@ -42,13 +42,15 @@ export class UpdateReimbursementsComponent implements OnInit {
     this.getRequestsByStatus(status);
   }
 
-    changeStatus(status: any){
-      this.updateRequest.requestStatus
+    changeStatus(status: any, request: Request){
+      this.updateRequest.requestStatus = status
+      console.log(status);
     }
 
   
 
-  updateRequestInfo(){
+  updateRequestInfo(request: Request){
+    console.log(this.updateRequest);
     this.requestHttpService.updateRequest(this.updateRequest).subscribe((response)=>{
       this.router.navigate(['view-Reimbursments'])
     })
