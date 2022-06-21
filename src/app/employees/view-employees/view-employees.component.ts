@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersHttpService } from 'src/app/users-http.service';
 import { Employee } from '../employee.model';
 import { Router } from '@angular/router';
+import { UpdateProfileComponent } from 'src/app/profile/update-profile/update-profile.component';
 
 @Component({
   selector: 'view-employees',
@@ -12,10 +13,10 @@ export class ViewEmployeesComponent implements OnInit {
 
  // employeeService: EmployeesService;
   currentAllEmployees: Employee[];
-  
+
 
   constructor(private usersHttpService: UsersHttpService,
-              private router: Router) { 
+              private router: Router) {
     this.currentAllEmployees = [];
   //this.employeeService = new EmployeesService();
   }
@@ -36,4 +37,6 @@ export class ViewEmployeesComponent implements OnInit {
 
    }
 
+
 }
+

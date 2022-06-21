@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersHttpService } from 'src/app/users-http.service';
 import { User } from 'src/app/users/user.model';
+
+import { Router } from '@angular/router';
+import { Employee } from 'src/app/employees/employee.model';
+import { EmployeesService } from 'src/app/employees/employees.service';
+
 
 @Component({
   selector: 'update-profile',
@@ -9,36 +15,7 @@ import { User } from 'src/app/users/user.model';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent implements OnInit {
-  user: User ={
-    userId:0,
-    userFirstName: '',
-    userLastName: '',
-    userEmail: '',
-    userPassword: '',
-    userRole: '',
-  }
-  storeUserInfo(user: User): void{
-    sessionStorage.setItem("userInformation", JSON.stringify(user));
-  }
-//  user = sessionStorage.getItem("userinformation");
- 
-  retreiveUserInfo(): User{
-    let  user: User ={
-      userId:0,
-      userFirstName: '',
-      userLastName: '',
-      userEmail: '',
-      userPassword: '',
-      userRole: '',
-    };
-    
-    let userData: any = sessionStorage.getItem("userInformation");
-    if(userData!=null){
-      user = JSON.parse(userData);
-    }
-    return user;
-    
-  }
+
   
 
   constructor(private activatedRoute: ActivatedRoute, 
@@ -46,21 +23,23 @@ export class UpdateProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-     let updateUser = this.activatedRoute.snapshot.paramMap.get('user');
-     console.log(updateUser);
+     
+  
+
+  let bidParam=this.activatedRoute.snapshot.paramMp.get('userId');
+  console.log(bidParam);
+  this.updateProfile=this.employeesService.getAEmployeeProfile(bidParam);
+}
+  updateEmployeeProfile(){
+    this.employeesService.updateProfile(this.updateProfile)
+    this.router.navigate(['update-profile']);
+}
+
 
      
     
-     }
-     updateUserInfo(user: User){
-      this.usersHttpService.updateUser(user).subscribe((response)=>{
-        this.router.navigate(['view-http-books']);
-      })
-    }
-  
-    logTheChanges(title: any){
-      console.log(title);
-    }
+    
+ 
  
 }
 

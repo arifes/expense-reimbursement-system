@@ -17,12 +17,12 @@ export class ViewRequestsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private requestsHttpService: RequestsHttpService,
-    private router: Router) { 
+    private router: Router) {
 
       this.employeeRequests = []
       this.currentRequestsByEmployee = [];
    }
-    
+
 
    ngOnInit(): void {
     let bidParam = this.activatedRoute.snapshot.paramMap.get('uid');
@@ -32,8 +32,9 @@ export class ViewRequestsComponent implements OnInit {
       this.currentRequestsByEmployee = response
 
     })
+    
   }
 }
- 
-      
-  
+
+
+

@@ -25,28 +25,35 @@ public class UsersController {
 	@Autowired
 	UserService userService;
 	RequestService requestService;
-	
 
 
 	@GetMapping("users")
-	public List<UserPojo> getUsers() throws ApplicationException{
+	public List<UserPojo> getUsers() throws ApplicationException {
 		return userService.getUsers();
 	}
-	
+
 	@PostMapping("users")
-	public UserPojo getUserByUserEmailAndUserPassword(@RequestBody UserPojo userPojo ) throws ApplicationException {
+	public UserPojo getUserByUserEmailAndUserPassword(@RequestBody UserPojo userPojo) throws ApplicationException {
 		return userService.getUserByUserEmailAndUserPassword(userPojo);
-		
+
 	}
+
 	@GetMapping("users/{userId}")
 	public UserPojo getUserById(@PathVariable("userId") int userId) throws ApplicationException {
 		return userService.getUserById(userId);
 
 	}
+
 	@PutMapping("users")
-	public UserPojo updateUser(@RequestBody UserPojo userPojo)
-			throws ApplicationException {
+	public UserPojo updateUser(@RequestBody UserPojo userPojo) throws ApplicationException {
 		return userService.updateUser(userPojo);
 	}
+
+
+	 * @GetMapping("users/{uid}") public UserPojo getUser(@PathVariable("uid") int
+	 * userId) throws ApplicationException { return userService.getUser(userId);
+	 * 
+	 * }
 	
+
 }
