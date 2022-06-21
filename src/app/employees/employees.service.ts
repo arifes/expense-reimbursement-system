@@ -8,7 +8,7 @@ export class EmployeesService {
   allEmployees: Employee [] = [
     {
     userId: 0,
-    userFirstName: '', 
+    userFirstName: '',
     userLastName: '' ,
     userEmail:   '',
     userPassword: '',
@@ -22,7 +22,27 @@ export class EmployeesService {
     return this.allEmployees;
   }
 
- // getAllRequestsByEmployee(userId: number){
- //     return this.allRequestsByEmployee;
- // }
+getAEmployeeProfile(userId:any): Employee{
+  let sentProfile: Employee ={
+    userId: 0,
+    userFirstName: "",
+    userLastName: "",
+    userEmail: "",
+    userRole: "",
+    userPassword: ''
+  }
+  for (let i=0; i<this.allEmployees.length;i++){
+    if (this.allEmployees[i].userId==userId){
+      sentProfile=this.allEmployees[i];
+    }
+  }
+  return sentProfile;
+}
+ updateProfile(sentProfile:Employee): void{
+  for (let i=0;i<this.allEmployees.length;i++){
+    if (this.allEmployees[i].userId==sentProfile.userId){
+      this.allEmployees[i]=sentProfile;
+    }
+  }
+ }
 }

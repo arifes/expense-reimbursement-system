@@ -24,9 +24,9 @@ export class AddRequestComponent implements OnInit {
   ngOnInit(): void {
   }
   addANewRequest(){
-    this.requestsHttpService.addARequest(this.newRequest).subscribe((response)=>{
+   // this.requestsHttpService.addARequest(this.newRequest).subscribe((response)=>{
       //this response is not of much use
-      console.log(response);
+    //  console.log(response);
        // we need a fresh fetch of all books from the database
       //this.loadData();
 
@@ -40,7 +40,7 @@ export class AddRequestComponent implements OnInit {
       requestId: 0
       };
 
-    })
+    //})
   }
 
 }

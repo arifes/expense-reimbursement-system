@@ -67,11 +67,7 @@ public class UserServiceImpl implements UserService {
 
 
 
-	@Override
-	public UserPojo editUser(UserPojo userPojo, int userId) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	@Override
 	public UserPojo updateUser(UserPojo userPojo) throws ApplicationException {
@@ -80,6 +76,14 @@ public class UserServiceImpl implements UserService {
 		UserEntity returnedUserEntity = userDao.save(userEntity);
 
 		return userPojo;
+	}
+
+
+
+	@Override
+	public UserPojo editUser(UserPojo userPojo, int userId) throws ApplicationException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
