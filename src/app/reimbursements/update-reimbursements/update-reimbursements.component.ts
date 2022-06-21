@@ -56,7 +56,7 @@ export class UpdateReimbursementsComponent implements OnInit {
     
     this.requestHttpService.updateRequest(this.updateRequest).subscribe((response)=>{
       console.log(this.updateRequest);
-      this.router.navigate(['view-Reimbursments'])
+      this.router.navigate(['update-Reimbursments'])
       
     })
   }

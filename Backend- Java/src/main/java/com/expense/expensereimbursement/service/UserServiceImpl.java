@@ -43,12 +43,12 @@ public class UserServiceImpl implements UserService {
 	
 		UserEntity fetchedUserEntity = userDao.findByUserEmailAndUserPassword(email, password);
 		UserPojo newUserPojo = null;		
-			// copy the entity into the pojo
-			//bookPojo = new BookPojo(fetchedBookEntity.getId(), fetchedBookEntity.getBookTitle(), fetchedBookEntity.getBookGenre(), fetchedBookEntity.getBookAuthor(),fetchedBookEntity.getBookCost(), fetchedBookEntity.getBookImage());
+			
+			
 			newUserPojo = new UserPojo();
 			BeanUtils.copyProperties(fetchedUserEntity, newUserPojo); // nested copying will not take place here
 		
-		//LOG.info("Exited getABook() in service...");
+		
 		return newUserPojo;
 	}
 	

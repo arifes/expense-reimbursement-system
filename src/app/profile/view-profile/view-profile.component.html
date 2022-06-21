@@ -1,45 +1,30 @@
-<section class="vh-100" style="background-color: #9A616D;">
 
-    <br>
-    <br>
-    <br>
-  
-    <div class="centered">
-  
-  
-  
-    <form>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault01">Employee Id:</label>
-          <input type="text" class="form-control" id="validationDefault01" placeholder="Employee Id"  required>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault01">First name</label>
-          <input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault02">Last name</label>
-          <input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefaultUsername">Email</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupPrepend2">@</span>
-            </div>
-            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
+  <button type="button" (click)="retreiveUserInfo()" class="btn btn-default">View Employee Information</button>
+  <div class="container">
+    <p>The .table-bordered class adds borders to a table:</p>            
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Employee Information</th>
+          <th><button type="button" (click)="goToUpdateProfile()" class="btn btn-default">View Employee Information</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First Name: {{user.userFirstName}} </td>
+        </tr>
+        <tr>
+          <td>Last Name: {{user.userLastName}}</td>
+        </tr>
+        <tr>
+          <td>Email: {{user.userEmail}}</td>
+        </tr>
+        <tr>
+          <td>Password:{{user.userPassword}} </td>
+        </tr>
+
+
   
   
+   
   
-      </div>
-  
-  
-    </form>
-    </div>
-  
-    </section>

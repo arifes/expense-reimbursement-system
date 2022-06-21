@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersHttpService } from 'src/app/users-http.service';
+import { User } from 'src/app/users/user.model';
 
 @Component({
   selector: 'view-profile',
@@ -6,10 +9,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-profile.component.css']
 })
 export class ViewProfileComponent implements OnInit {
+  
+  constructor(private userHttpService: UsersHttpService,
+              private router: Router) { }
 
-  constructor() { }
-
+              storeUserInfo(user: User): void{
+                sessionStorage.setItem("userInformation", JSON.stringify(user));
+              }
+           
+              
+            retreiveUserInfo(): User{
+                let  user: User ={
+                  userId:0,
+                  userFirstName: '',
+                  userLastName: '',
+                  userEmail: '',
+                  userPassword: '',
+                  userRole: '',
+                };
+                
+                let userData: any = sessionStorage.getItem("userInformation");
+                if(userData!=null){
+                  user = JSON.parse(userData);
+                }
+                return user;
+                
+              }
   ngOnInit(): void {
   }
 
+  goToUpdateProfile(){
+    this.router.navigate(['update-profile'])
+  }
+ 
 }

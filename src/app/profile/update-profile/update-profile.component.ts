@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersHttpService } from 'src/app/users-http.service';
+import { User } from 'src/app/users/user.model';
+
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/employees/employee.model';
 import { EmployeesService } from 'src/app/employees/employees.service';
+
 
 @Component({
   selector: 'update-profile',
@@ -9,18 +15,16 @@ import { EmployeesService } from 'src/app/employees/employees.service';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent implements OnInit {
-  updateProfile: Employee = {
-    userId: 0,
-    userFirstName: '',
-    userLastName: '',
-    userEmail: '',
-    userRole: '',
-    userPassword: ''
-  }
-  activatedRoute: any;
-  constructor(private employeesService: EmployeesService ,private router: Router) { }
+
+  
+
+  constructor(private activatedRoute: ActivatedRoute, 
+    private usersHttpService: UsersHttpService,
+    private router: Router) { }
 
   ngOnInit(): void {
+     
+  
 
   let bidParam=this.activatedRoute.snapshot.paramMp.get('userId');
   console.log(bidParam);
@@ -31,4 +35,12 @@ export class UpdateProfileComponent implements OnInit {
     this.router.navigate(['update-profile']);
 }
 
+
+     
+    
+    
+ 
+ 
 }
+
+

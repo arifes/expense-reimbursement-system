@@ -20,7 +20,6 @@ const routes: Routes = [
   {path: "view-requests", component: ViewRequestsComponent, canActivate:[AuthenticationGuard] },
   {path: "employeeRequests/:uid", component: ViewEmployeeRequestsComponent, canActivate:[AuthenticationGuard] },
   {path: "view-reimbursements", component: ViewReimbursementsComponent, canActivate:[AuthenticationGuard] },
-  {path: "view-reimbursements/:status", component: ViewReimbursementsComponent, canActivate:[AuthenticationGuard] },
   {path: "update-reimbursements", component: UpdateReimbursementsComponent, canActivate:[AuthenticationGuard] },
   {path: "resolved-reimbursements", component: ResolvedReimbursementsComponent, canActivate:[AuthenticationGuard] },
   {path: "update-profile", component: UpdateProfileComponent, canActivate:[AuthenticationGuard] },

@@ -26,7 +26,6 @@ public class UsersController {
 	UserService userService;
 	RequestService requestService;
 
-//	public List<UserPojo> userPojo = createList();
 
 	@GetMapping("users")
 	public List<UserPojo> getUsers() throws ApplicationException {
@@ -49,21 +48,12 @@ public class UsersController {
 	public UserPojo updateUser(@RequestBody UserPojo userPojo) throws ApplicationException {
 		return userService.updateUser(userPojo);
 	}
-	/*
-	 * 
-	 * 
-	 * public List<UserPojo> createList() { List<UserPojo> tempUserPojo = new
-	 * ArrayList<>(); return tempUserPojo; }
-	 * 
-	 * @PostMapping public UserPojo create(@RequestBody UserPojo newUserPojo) {
-	 * userPojo.add(newUserPojo); System.out.println(userPojo); return newUserPojo;
-	 * 
-	 * }
-	 * 
+
+
 	 * @GetMapping("users/{uid}") public UserPojo getUser(@PathVariable("uid") int
 	 * userId) throws ApplicationException { return userService.getUser(userId);
 	 * 
 	 * }
-	 * 
-	 */
+	
+
 }
