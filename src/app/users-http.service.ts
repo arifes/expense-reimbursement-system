@@ -19,4 +19,10 @@ export class UsersHttpService {
   validateUser(user: User): Observable<User>{
     return this.http.post<User>(this.baseUrl, user);
 }
+getAEmployee(user:User):Observable<Employee>{
+  return this.http.get<Employee>(this.baseUrl);
+}
+updateUser(updateUser: User): Observable<User>{
+  return this.http.put<User>(this.baseUrl, updateUser);
+}
 }

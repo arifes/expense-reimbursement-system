@@ -1,51 +1,83 @@
-<section class="vh-100" style="background-color: #9A616D;">
 
-    <br>
-    <br>
-    <br>
-  
-    <div class="centered">
-  
-  
-  
-    <form>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault01">Employee Id:</label>
-          <input type="text" class="form-control" id="validationDefault01" placeholder="Employee Id"  required>
+  <div class="container">
+    <form #myForm="ngForm">
+     <div class="card m-3">
+       <div class="card-header bg-primary">Profile update</div>
+       <div class="card-body">
+        <div class="mb-3 mt-3">
+            User ID : {{ user.userId }}
         </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault01">First name</label>
-          <input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefault02">Last name</label>
-          <input type="text" class="form-control" id="validationDefault02" placeholder="Last name"  required>
-        </div>
-        <div class="col-md-4 mb-3">
-          <label for="validationDefaultUsername">Email</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupPrepend2">@</span>
-            </div>
-            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-      <label class="form-check-label" for="invalidCheck2">
-  
-      </label>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
-  
-  
-    </form>
-    </div>
-  
-    </section>
+           <div class="mb-3 mt-3">
+               <label for="firstName" class="form-label">First name:</label>
+               <input 
+                   type="text" 
+                   class="form-control" 
+                   id="firstName" 
+                   placeholder="Enter First Name" 
+                   name="userFirstName"
+                   [(ngModel)]="user.userFirstName"
+                   required
+                   minlength="2"
+                   maxlength="200"
+                   #usFName="ngModel"
+                   (change)="logTheChanges(myForm)">
+                <div *ngIf="!usFName.valid" class="text-danger small">
+                    First Name is required!
+                </div>
+           </div>
+           <div class="mb-3">
+               <label for="lastname" class="form-label">Last Name:</label>
+               <input 
+                   type="text" 
+                   class="form-control" 
+                   id="lastname" 
+                   placeholder="Enter Last Name" 
+                   name="userLastName"
+                   required
+                   #usLName="ngModel"
+                   [(ngModel)]="user.userLastName">
+                <div *ngIf="!usLName.valid" class="text-danger small">
+                    Last Name is required!
+                </div>
+           </div>
+           <div class="mb-3">
+               <label for="email" class="form-label">User Email:</label>
+               <input 
+                   type="text" 
+                   class="form-control" 
+                   id="email" 
+                   placeholder="Enter Email" 
+                   name="userEmail"
+                   #usEmail="ngModel"
+                   [(ngModel)]="user.userEmail"
+                   required>
+                <div *ngIf="!usEmail.valid" class="text-danger small">
+                    Email is required!
+                </div>
+           </div>
+           <div class="mb-3">
+               <label for="Password" class="form-label">Password:</label>
+               <input 
+                   type="text" 
+                   class="form-control" 
+                   id="password" 
+                   placeholder="Enter password" 
+                   name="userPassword"
+                   #usPassword="ngModel"
+                   [(ngModel)]="user.userPassword"
+                   required>
+                <div *ngIf="!usPassword.valid" class="text-danger small">
+                    Password is required!
+                </div>
+           </div>
+       <div class="card-footer bg-primary">
+           <button 
+               type="button" 
+               class="btn btn-warning" 
+               (click)="updateUser(this.user)"
+               [disabled]="!myForm.valid">Update Profile</button>
+       </div>
+     </div>
+   
+   </div>
+ 
